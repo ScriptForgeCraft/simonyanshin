@@ -4,6 +4,10 @@ node_modules/
 # Vite production output
 dist/
 
+# Generated localized entry pages
+/ru/
+/en/
+
 # Local environment and logs
 .env
 .env.*

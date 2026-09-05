@@ -7,8 +7,9 @@
     <meta
       name="description"
       content="SimonyanShin — շինարարություն, վերանորոգում և վերականգնում Հայաստանում։"
+      data-i18n-content="metaDescription"
     />
-    <title>SimonyanShin — Construction Company</title>
+    <title>SimonyanShin — Շինարարական ընկերություն</title>
   </head>
   <body>
     <svg class="svg-sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
@@ -33,9 +34,9 @@
 
     <header class="site-header" data-header>
       <div class="container header-inner">
-        <a class="brand" href="#home" aria-label="SimonyanShin գլխավոր էջ">
+        <a class="brand" href="#home" aria-label="SimonyanShin գլխավոր էջ" data-i18n-aria-label="brandHome">
           <svg class="brand-mark" viewBox="0 0 45 47" aria-hidden="true"><path d="m22.5 2 18 10.4v21.1L22.5 44 4.5 33.5V12.4L22.5 2Z"/><path d="m14 14 8.5 4.9V29l8.5 4.9 7-4.1M14 23.8l8.5 4.9 8.5-4.9M22.5 8v10.9l-8.5 4.9V34"/></svg>
-          <span class="brand-copy"><strong>SIMONYANSHIN</strong><small>CONSTRUCTION COMPANY</small></span>
+          <span class="brand-copy"><strong>SIMONYANSHIN</strong><small data-i18n="brandTagline">ՇԻՆԱՐԱՐԱԿԱՆ ԸՆԿԵՐՈՒԹՅՈՒՆ</small></span>
         </a>
 
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" data-menu-toggle>
@@ -43,14 +44,23 @@
         </button>
 
         <nav id="primary-navigation" class="primary-nav" aria-label="Հիմնական ընտրացանկ" data-menu>
-          <a class="is-current" href="#home">Գլխավոր</a>
-          <a href="#why-us">Մեր մասին</a>
-          <a href="#services">Ծառայություններ</a>
-          <a href="#projects">Նախագծեր</a>
-          <a href="#why-us">Մեր մոտեցումը</a>
-          <a href="#contact">Կապ</a>
+          <a class="is-current" href="#home" data-i18n="navHome">Գլխավոր</a>
+          <a href="#why-us" data-i18n="navAbout">Մեր մասին</a>
+          <a href="#services" data-i18n="navServices">Ծառայություններ</a>
+          <a href="#projects" data-i18n="navProjects">Նախագծեր</a>
+          <a href="#why-us" data-i18n="navApproach">Մեր մոտեցումը</a>
+          <a href="#contact" data-i18n="navContact">Կապ</a>
         </nav>
-        <button class="language-select" type="button" aria-label="Ընտրված լեզուն՝ հայերեն">HY <span>⌄</span></button>
+        <div class="language-selector" data-language-selector>
+          <button class="language-select" type="button" aria-expanded="false" aria-controls="language-menu" data-language-toggle data-i18n-aria-label="languageMenu">
+            <span data-current-language>HY</span><span>⌄</span>
+          </button>
+          <div id="language-menu" class="language-menu" data-language-menu>
+            <a href="/" hreflang="hy" lang="hy" data-locale-link="hy">Հայ</a>
+            <a href="/ru/" hreflang="ru" lang="ru" data-locale-link="ru">RU</a>
+            <a href="/en/" hreflang="en" lang="en" data-locale-link="en">EN</a>
+          </div>
+        </div>
       </div>
     </header>
 
@@ -59,74 +69,74 @@
         <div class="hero-shade"></div>
         <div class="container hero-content">
           <p class="eyebrow">SIMONYANSHIN CONSTRUCTION COMPANY</p>
-          <h1 id="hero-title">ԿԱՌՈՒՑՈՒՄ ԵՆՔ<br />ՊԱՏԱՍԽԱՆԱՏՎՈՒԹՅԱՄԲ</h1>
-          <p class="hero-description">Շինարարություն, վերանորոգում և պատմամշակութային ժառանգության վերականգնում՝ մեկ պատասխանատու թիմի ներքո։</p>
-          <a class="button button-gold" href="#contact">ՔՆՆԱՐԿԵԼ ՆԱԽԱԳԻԾԸ <svg aria-hidden="true"><use href="#icon-arrow" /></svg></a>
+          <h1 id="hero-title" data-i18n-html="heroTitle">ԿԱՌՈՒՑՈՒՄ ԵՆՔ<br />ՊԱՏԱՍԽԱՆԱՏՎՈՒԹՅԱՄԲ</h1>
+          <p class="hero-description" data-i18n="heroDescription">Շինարարություն, վերանորոգում և պատմամշակութային ժառանգության վերականգնում՝ մեկ պատասխանատու թիմի ներքո։</p>
+          <a class="button button-gold" href="#contact"><span data-i18n="discussProject">ՔՆՆԱՐԿԵԼ ՆԱԽԱԳԻԾԸ</span><svg aria-hidden="true"><use href="#icon-arrow" /></svg></a>
         </div>
       </section>
 
       <section id="services" class="services section-light" aria-labelledby="services-title">
         <div class="container">
-          <h2 id="services-title" class="section-title">ՄԵՐ ԾԱՌԱՅՈՒԹՅՈՒՆՆԵՐԸ</h2>
+          <h2 id="services-title" class="section-title" data-i18n="servicesTitle">ՄԵՐ ԾԱՌԱՅՈՒԹՅՈՒՆՆԵՐԸ</h2>
           <div class="title-rule" aria-hidden="true"></div>
           <div class="services-grid">
-            <article class="service-card"><svg class="line-icon" aria-hidden="true"><use href="#icon-crane" /></svg><h3>ՇԻՆԱՐԱՐՈՒԹՅՈՒՆ</h3><p>Բնակելի, հասարակական և այլ նշանակության կառույցների շինարարություն՝ ամբողջական կազմակերպմամբ։</p></article>
-            <article class="service-card"><svg class="line-icon" aria-hidden="true"><use href="#icon-house" /></svg><h3>ՎԵՐԱՆՈՐՈԳՈՒՄ</h3><p>Բնակարանների, առանձնատների, հյուրանոցների և այլ տարածքների վերանորոգում։</p></article>
-            <article class="service-card"><svg class="line-icon" aria-hidden="true"><use href="#icon-column" /></svg><h3>ՎԵՐԱԿԱՆԳՆՈՒՄ ԵՎ<br />ՌԵՍՏԱՎՐԱՑԻԱ</h3><p>Պատմամշակութային արժեք ունեցող կառույցների պահպանման և վերականգնման աշխատանքներ։</p></article>
-            <article class="service-card"><svg class="line-icon" aria-hidden="true"><use href="#icon-tool" /></svg><h3>ՏԵԽՆԻԿԱԿԱՆ<br />ՍՊԱՍԱՐԿՈՒՄ</h3><p>Շենքերի և տարածքների շարունակական տեխնիկական սպասարկում և շահագործման հետ կապված աշխատանքներ։</p></article>
+            <article class="service-card"><svg class="line-icon" aria-hidden="true"><use href="#icon-crane" /></svg><h3 data-i18n="serviceConstructionTitle">ՇԻՆԱՐԱՐՈՒԹՅՈՒՆ</h3><p data-i18n="serviceConstructionText">Բնակելի, հասարակական և այլ նշանակության կառույցների շինարարություն՝ ամբողջական կազմակերպմամբ։</p></article>
+            <article class="service-card"><svg class="line-icon" aria-hidden="true"><use href="#icon-house" /></svg><h3 data-i18n="serviceRenovationTitle">ՎԵՐԱՆՈՐՈԳՈՒՄ</h3><p data-i18n="serviceRenovationText">Բնակարանների, առանձնատների, հյուրանոցների և այլ տարածքների վերանորոգում։</p></article>
+            <article class="service-card"><svg class="line-icon" aria-hidden="true"><use href="#icon-column" /></svg><h3 data-i18n="serviceRestorationTitle">ՎԵՐԱԿԱՆԳՆՈՒՄ ԵՎ ՌԵՍՏԱՎՐԱՑԻԱ</h3><p data-i18n="serviceRestorationText">Պատմամշակութային արժեք ունեցող կառույցների պահպանման և վերականգնման աշխատանքներ։</p></article>
+            <article class="service-card"><svg class="line-icon" aria-hidden="true"><use href="#icon-tool" /></svg><h3 data-i18n="serviceMaintenanceTitle">ՏԵԽՆԻԿԱԿԱՆ ՍՊԱՍԱՐԿՈՒՄ</h3><p data-i18n="serviceMaintenanceText">Շենքերի և տարածքների շարունակական տեխնիկական սպասարկում և շահագործման հետ կապված աշխատանքներ։</p></article>
           </div>
         </div>
       </section>
 
       <section id="projects" class="projects section-dark" aria-labelledby="projects-title">
         <div class="container">
-          <h2 id="projects-title" class="section-title section-title-light">ՄԵՐ ՆԱԽԱԳԾԵՐԸ</h2>
+          <h2 id="projects-title" class="section-title section-title-light" data-i18n="projectsTitle">ՄԵՐ ՆԱԽԱԳԾԵՐԸ</h2>
           <div class="title-rule" aria-hidden="true"></div>
-          <p class="section-lead">Յուրաքանչյուր նախագիծ մեզ համար միայն կատարված աշխատանք չէ։ Այն մեր պատասխանատվության արդյունքն է։</p>
+          <p class="section-lead" data-i18n="projectsLead">Յուրաքանչյուր նախագիծ մեզ համար միայն կատարված աշխատանք չէ։ Այն մեր պատասխանատվության արդյունքն է։</p>
           <div class="projects-grid">
-            <article class="project-card"><img src="/src/assets/project-hovhannes.jpg" alt="Սուրբ Հովհաննես վանք, Մեղրի" /><h3>Ս. ՀՈՎՀԱՆՆԵՍ ՎԱՆՔ</h3><p>Մեղրի</p><span>Վերականգնման և շինարարական աշխատանքներ</span></article>
-            <article class="project-card"><img src="/src/assets/project-toros.jpg" alt="Թորոս իշխանի աղբյուր, Եղվարդ" /><h3>ԹՈՐՈՍ ԻՇԽԱՆԻ ԱՂԲՅՈՒՐ</h3><p>Եղվարդ</p><span>Վերականգնման աշխատանքներ</span></article>
-            <article class="project-card"><img src="/src/assets/project-hotel.jpg" alt="Հյուրանոցային համալիր, Ջերմուկ" /><h3>ՀՅՈՒՐԱՆՈՑԱՅԻՆ ՀԱՄԱԼԻՐ</h3><p>Ջերմուկ</p><span>Շինարարական և վերանորոգման աշխատանքներ</span></article>
-            <article class="project-card"><img src="/src/assets/project-kapan.jpg" alt="Կամուրջ Կապանի տարածաշրջանում" /><h3>ՆԱԽԱԳԾԵՐ՝ ԿԱՊԱՆԻ ՏԱՐԱԾԱՇՐՋԱՆՈՒՄ</h3><p>Կապան և շրջակայք</p><span>Շինարարական և վերականգնման աշխատանքներ</span></article>
+            <article class="project-card"><img src="/src/assets/project-hovhannes.jpg" alt="Սուրբ Հովհաննես վանք, Մեղրի" data-i18n-alt="projectHovhannesAlt" /><h3 data-i18n="projectHovhannesTitle">Ս. ՀՈՎՀԱՆՆԵՍ ՎԱՆՔ</h3><p data-i18n="projectHovhannesLocation">Մեղրի</p><span data-i18n="projectHovhannesText">Վերականգնման և շինարարական աշխատանքներ</span></article>
+            <article class="project-card"><img src="/src/assets/project-toros.jpg" alt="Թորոս իշխանի աղբյուր, Եղվարդ" data-i18n-alt="projectTorosAlt" /><h3 data-i18n="projectTorosTitle">ԹՈՐՈՍ ԻՇԽԱՆԻ ԱՂԲՅՈՒՐ</h3><p data-i18n="projectTorosLocation">Եղվարդ</p><span data-i18n="projectTorosText">Վերականգնման աշխատանքներ</span></article>
+            <article class="project-card"><img src="/src/assets/project-hotel.jpg" alt="Հյուրանոցային համալիր, Ջերմուկ" data-i18n-alt="projectHotelAlt" /><h3 data-i18n="projectHotelTitle">ՀՅՈՒՐԱՆՈՑԱՅԻՆ ՀԱՄԱԼԻՐ</h3><p data-i18n="projectHotelLocation">Ջերմուկ</p><span data-i18n="projectHotelText">Շինարարական և վերանորոգման աշխատանքներ</span></article>
+            <article class="project-card"><img src="/src/assets/project-kapan.jpg" alt="Կամուրջ Կապանի տարածաշրջանում" data-i18n-alt="projectKapanAlt" /><h3 data-i18n="projectKapanTitle">ՆԱԽԱԳԾԵՐ՝ ԿԱՊԱՆԻ ՏԱՐԱԾԱՇՐՋԱՆ</h3><p data-i18n="projectKapanLocation">Կապան և շրջակայք</p><span data-i18n="projectKapanText">Շինարարական և վերականգնման աշխատանքներ</span></article>
           </div>
-          <a class="button button-outline" href="#projects">ԴԻՏԵԼ ԲՈԼՈՐ ՆԱԽԱԳԾԵՐԸ <svg aria-hidden="true"><use href="#icon-arrow" /></svg></a>
+          <a class="button button-outline" href="#projects"><span data-i18n="viewAllProjects">ԴԻՏԵԼ ԲՈԼՈՐ ՆԱԽԱԳԾԵՐԸ</span><svg aria-hidden="true"><use href="#icon-arrow" /></svg></a>
         </div>
       </section>
 
       <section id="why-us" class="benefits section-light" aria-labelledby="benefits-title">
         <div class="container">
-          <h2 id="benefits-title" class="section-title">ԻՆՉՈՒՐ SIMONYANSHIN</h2>
+          <h2 id="benefits-title" class="section-title" data-i18n="benefitsTitle">ԻՆՉՈՒ SIMONYANSHIN</h2>
           <div class="title-rule" aria-hidden="true"></div>
           <div class="benefits-grid">
-            <article class="benefit-card"><svg class="line-icon" aria-hidden="true"><use href="#icon-people" /></svg><h3>ՄԵԿ ՊԱՏԱՍԽԱՆԱՏՈՒ ԹԻՄ</h3><p>Նախագծի տարբեր փուլերը կառավարում ենք միասնական համակարգով։</p></article>
-            <article class="benefit-card"><svg class="line-icon" aria-hidden="true"><use href="#icon-eye" /></svg><h3>ՈՒՂԻՂ ՎԵՐԱՀՍԿՈՂՈՒԹՅՈՒՆ</h3><p>Աշխատանքների ընթացքը, նյութերը, ժամկետներն ու ենթակապալառուների աշխատանքը վերահսկվում են տեղում։</p></article>
-            <article class="benefit-card"><svg class="line-icon" aria-hidden="true"><use href="#icon-badge" /></svg><h3>ԱՐԴՅՈՒՆՔ՝ ՈՉ ԹԵ ՊԱՐԶԱՊԵՍ ԸՆԹԱՑՔ</h3><p>Մեր նպատակը աշխատանքը սկսել չէ։ Մեր նպատակը այն ճիշտ ավարտելն է։</p></article>
-            <article class="benefit-card"><svg class="line-icon" aria-hidden="true"><use href="#icon-shield" /></svg><h3>ՊԱՏԱՍԽԱՆԱՏՎՈՒԹՅՈՒՆ ՄԱՆՐՈՒՔՆԵՐԻ ՀԱՆԴԵՊ</h3><p>Որակը ձևավորվում է ոչ միայն վերջնական արդյունքով, այլ ամբողջ գործընթացի ընթացքում։</p></article>
+            <article class="benefit-card"><svg class="line-icon" aria-hidden="true"><use href="#icon-people" /></svg><h3 data-i18n="benefitTeamTitle">ՄԵԿ ՊԱՏԱՍԽԱՆԱՏՈՒ ԹԻՄ</h3><p data-i18n="benefitTeamText">Նախագծի տարբեր փուլերը կառավարում ենք միասնական համակարգով։</p></article>
+            <article class="benefit-card"><svg class="line-icon" aria-hidden="true"><use href="#icon-eye" /></svg><h3 data-i18n="benefitControlTitle">ՈՒՂԻՂ ՎԵՐԱՀՍԿՈՂՈՒԹՅՈՒՆ</h3><p data-i18n="benefitControlText">Աշխատանքների ընթացքը, նյութերը, ժամկետներն ու ենթակապալառուների աշխատանքը վերահսկվում են տեղում։</p></article>
+            <article class="benefit-card"><svg class="line-icon" aria-hidden="true"><use href="#icon-badge" /></svg><h3 data-i18n="benefitResultTitle">ԱՐԴՅՈՒՆՔ՝ ՈՉ ԹԵ ՊԱՐԶԱՊԵՍ ԸՆԹԱՑՔ</h3><p data-i18n="benefitResultText">Մեր նպատակը աշխատանքը սկսել չէ։ Մեր նպատակը այն ճիշտ ավարտելն է։</p></article>
+            <article class="benefit-card"><svg class="line-icon" aria-hidden="true"><use href="#icon-shield" /></svg><h3 data-i18n="benefitQualityTitle">ՊԱՏԱՍԽԱՆԱՏՎՈՒԹՅՈՒՆ ՄԱՆՐՈՒՔՆԵՐԻ ՀԱՆԴԵՊ</h3><p data-i18n="benefitQualityText">Որակը ձևավորվում է ոչ միայն վերջնական արդյունքով, այլ ամբողջ գործընթացի ընթացքում։</p></article>
           </div>
         </div>
       </section>
 
       <section class="stats" aria-label="SimonyanShin թվերով">
         <div class="container stats-grid">
-          <div class="stat"><strong>2023</strong><span>ՀԻՄՆԱԴՐՄԱՆ ՏԱՐԻ</span></div>
-          <div class="stat"><strong>150+</strong><span>ԻՐԱԳՈՐԾՎԱԾ ՆԱԽԱԳԾԵՐ</span></div>
-          <div class="stat"><strong>30+</strong><span>ԿԱՌՈՒՑՎԱԾ ՏՆԵՐ</span></div>
-          <div class="stat stat-location"><svg aria-hidden="true"><use href="#icon-pin" /></svg><span>ԱՄԲՈՂՋ ՀԱՅԱՍՏԱՆՈՒՄ</span></div>
+          <div class="stat"><strong>2023</strong><span data-i18n="statFounded">ՀԻՄՆԱԴՐՄԱՆ ՏԱՐԻ</span></div>
+          <div class="stat"><strong>150+</strong><span data-i18n="statProjects">ԻՐԱԿԱՆԱՑՎԱԾ ՆԱԽԱԳԾԵՐ</span></div>
+          <div class="stat"><strong>30+</strong><span data-i18n="statHomes">ԿԱՌՈՒՑՎԱԾ ՏՆԵՐ</span></div>
+          <div class="stat stat-location"><svg aria-hidden="true"><use href="#icon-pin" /></svg><span data-i18n="statArmenia">ԱՄԲՈՂՋ ՀԱՅԱՍՏԱՆՈՒՄ</span></div>
         </div>
       </section>
 
       <section id="contact" class="contact" aria-labelledby="contact-title">
-        <div class="contact-image" role="img" aria-label="Կառուցվող շինություն"></div>
+        <div class="contact-image" role="img" aria-label="Կառուցվող շինություն" data-i18n-aria-label="contactImage"></div>
         <div class="contact-content">
           <div class="contact-copy">
-            <h2 id="contact-title">ՍԿՍԵՆՔ ՁԵՐ ՆԱԽԱԳԻԾԸ</h2>
-            <p>Ունե՞ք կառուցման, վերանորոգման կամ վերականգնման նախագիծ։ Կապվեք մեզ հետ, և մեր թիմը կքննարկի հաջորդ քայլերը։</p>
-            <a class="button button-gold" href="mailto:info@simonyanshin.am">ՔՆՆԱՐԿԵԼ ՆԱԽԱԳԻԾԸ <svg aria-hidden="true"><use href="#icon-arrow" /></svg></a>
+            <h2 id="contact-title" data-i18n="contactTitle">ՍԿՍԵՆՔ ՁԵՐ ՆԱԽԱԳԻԾԸ</h2>
+            <p data-i18n="contactDescription">Ունե՞ք կառուցման, վերանորոգման կամ վերականգնման նախագիծ։ Կապվեք մեզ հետ, և մեր թիմը կքննարկի հաջորդ քայլերը։</p>
+            <a class="button button-gold" href="mailto:info@simonyanshin.am"><span data-i18n="discussProject">ՔՆՆԱՐԿԵԼ ՆԱԽԱԳԻԾԸ</span><svg aria-hidden="true"><use href="#icon-arrow" /></svg></a>
           </div>
           <address class="contact-details">
             <a href="tel:+37494405060"><svg aria-hidden="true"><use href="#icon-phone" /></svg><span>+374 94 40 50 60</span></a>
             <a href="mailto:info@simonyanshin.am"><svg aria-hidden="true"><use href="#icon-mail" /></svg><span>info@simonyanshin.am</span></a>
-            <p><svg aria-hidden="true"><use href="#icon-pin" /></svg><span>Երևան, Հայաստան</span></p>
+            <p><svg aria-hidden="true"><use href="#icon-pin" /></svg><span data-i18n="contactLocation">Երևան, Հայաստան</span></p>
             <div class="socials" aria-label="Սոցիալական ցանցեր"><a href="#contact" aria-label="Instagram"><svg><use href="#icon-instagram" /></svg></a><a href="#contact" aria-label="LinkedIn"><svg><use href="#icon-linkedin" /></svg></a><a href="#contact" aria-label="Telegram"><svg><use href="#icon-telegram" /></svg></a></div>
           </address>
         </div>
