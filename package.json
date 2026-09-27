@@ -4,11 +4,12 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "predev": "node scripts/generate-localized-pages.mjs",
+    "predev": "node scripts/generate-projects-data.mjs && node scripts/generate-localized-pages.mjs",
     "dev": "vite",
-    "prebuild": "node scripts/generate-localized-pages.mjs",
+    "prebuild": "node scripts/generate-projects-data.mjs && node scripts/generate-localized-pages.mjs",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "import:portfolio": "node scripts/import-portfolio.mjs"
   },
   "devDependencies": {
     "vite": "^6.2.1"
