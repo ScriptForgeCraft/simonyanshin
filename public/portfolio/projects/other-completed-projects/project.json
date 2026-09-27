@@ -1,0 +1,10 @@
+{
+  "id": "projects-other-completed-projects",
+  "group": "projects",
+  "order": 22,
+  "titles": {
+    "hy": "Այլ իրականացված նախագծեր",
+    "ru": "Другие реализованные проекты",
+    "en": "Other Completed Projects"
+  }
+}

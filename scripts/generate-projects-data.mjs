@@ -1,121 +1,33 @@
-import { readdir, readFile, writeFile } from 'node:fs/promises'
+import { readFile, readdir, writeFile } from 'node:fs/promises'
 import { extname, join, relative, resolve, sep } from 'node:path'
+import {
+  extractLocaleSection,
+  findPrimaryDescription,
+  isAsciiSafeName,
+  locales,
+  parseLocaleContent,
+  supportedImageExtensions,
+  titleOverrideForDescription,
+} from './portfolio-utils.mjs'
 
 const root = process.cwd()
 const portfolioRoot = resolve(root, 'public/portfolio')
 const outputFile = resolve(root, 'src/projects-data.generated.js')
-const supportedImageExtensions = new Set(['.jpg', '.jpeg', '.png', '.webp', '.avif'])
-const locales = ['hy', 'ru', 'en']
-
-const singleParagraphTitles = {
-  'տանիք': {
-    hy: 'Տանիքների և պատուհանների փոխարինում',
-    ru: 'Замена кровель и окон',
-    en: 'Roof and Window Replacement',
-  },
-}
-
-const stripBold = (value) => value.replace(/^\*\*(.*?)\*\*$/s, '$1').trim()
-const isBoldLine = (value) => /^\*\*.*\*\*$/.test(value.trim())
-
-const extractLocaleSection = (source, languageCode) => {
-  const marker = languageCode.toUpperCase()
-  const expression = new RegExp(
-    `={4,}\\s*${marker}\\s*={4,}\\s*([\\s\\S]*?)(?=\\n={4,}\\s*(?:HY|RU|EN)\\s*={4,}|$)`,
-    'i',
-  )
-  return source.match(expression)?.[1]?.trim() ?? ''
-}
-
-const parseLocaleContent = (raw, folderName, locale) => {
-  const paragraphs = raw
-    .split(/\r?\n\s*\r?\n/)
-    .map((paragraph) => paragraph.trim())
-    .filter(Boolean)
-
-  if (!paragraphs.length) {
-    return { title: folderName, blocks: [] }
-  }
-
-  const titleOverride = singleParagraphTitles[folderName]?.[locale]
-
-  if (paragraphs.length === 1 && !isBoldLine(paragraphs[0])) {
-    return {
-      title: titleOverride ?? folderName,
-      blocks: [{ body: paragraphs[0].replace(/\*\*/g, '').trim() }],
-    }
-  }
-
-  let title = folderName
-  let index = 0
-  const first = paragraphs[0]
-
-  if (isBoldLine(first)) {
-    title = stripBold(first)
-    index = 1
-  } else if (!first.includes('\n')) {
-    title = stripBold(first)
-    index = 1
-  }
-
-  const blocks = []
-  let current = null
-
-  for (; index < paragraphs.length; index += 1) {
-    const paragraph = paragraphs[index]
-    const lines = paragraph.split(/\r?\n/).map((line) => line.trim()).filter(Boolean)
-
-    if (lines.length && isBoldLine(lines[0])) {
-      if (current) blocks.push(current)
-      current = {
-        title: stripBold(lines[0]),
-        body: lines.slice(1).join(' ').replace(/\*\*/g, '').trim(),
-      }
-      continue
-    }
-
-    const cleanBody = paragraph.replace(/\*\*/g, '').replace(/\r?\n/g, ' ').trim()
-    if (!cleanBody) continue
-
-    if (current && !current.body) {
-      current.body = cleanBody
-    } else {
-      if (current) blocks.push(current)
-      current = { body: cleanBody }
-    }
-  }
-
-  if (current) blocks.push(current)
-
-  return { title, blocks }
-}
-
-const findPrimaryDescription = (files) => {
-  const txtFiles = files.filter((file) => extname(file.name).toLowerCase() === '.txt')
-  const preferred = txtFiles.find((file) => file.name.toLowerCase() === 'description.txt')
-    ?? txtFiles.find((file) => file.name.toLowerCase() !== 'veranrwgwum.txt')
-    ?? txtFiles[0]
-
-  return preferred ?? null
-}
-
-const orderFromDescription = (descriptionFile, fallbackIndex) => {
-  if (!descriptionFile) return 900 + fallbackIndex
-  const stem = descriptionFile.name.replace(/\.txt$/i, '')
-  const number = Number.parseInt(stem, 10)
-  return Number.isFinite(number) && String(number) === stem ? number : 700 + fallbackIndex
-}
 
 const groupDefinitions = [
-  {
-    directory: '01_Նախագծեր_Projects_Проекты',
-    group: 'projects',
-  },
-  {
-    directory: '02_Պատմական_մեխանիզմներ_Historical_Machinery_Старинные_механизмы',
-    group: 'machinery',
-  },
+  { directory: 'projects', group: 'projects' },
+  { directory: 'historical-machinery', group: 'machinery' },
 ]
+
+const readProjectMetadata = async (folderPath) => {
+  try {
+    const raw = await readFile(join(folderPath, 'project.json'), 'utf8')
+    return JSON.parse(raw)
+  } catch (error) {
+    if (error.code === 'ENOENT') return null
+    throw new Error(`Invalid project.json in ${folderPath}: ${error.message}`)
+  }
+}
 
 const projects = []
 let fallbackIndex = 0
@@ -127,39 +39,76 @@ for (const groupDefinition of groupDefinitions) {
   try {
     folders = (await readdir(groupPath, { withFileTypes: true }))
       .filter((entry) => entry.isDirectory())
-      .sort((a, b) => a.name.localeCompare(b.name, 'hy'))
-  } catch {
-    continue
+      .sort((a, b) => a.name.localeCompare(b.name, 'en'))
+  } catch (error) {
+    if (error.code === 'ENOENT') continue
+    throw error
   }
 
   for (const folder of folders) {
     fallbackIndex += 1
+
+    if (!isAsciiSafeName(folder.name)) {
+      throw new Error(
+        `Unsafe portfolio directory "${folder.name}". Use only ASCII letters, numbers, dots, dashes and underscores.`,
+      )
+    }
+
     const folderPath = join(groupPath, folder.name)
     const files = (await readdir(folderPath, { withFileTypes: true })).filter((entry) => entry.isFile())
+
+    for (const file of files) {
+      if (!isAsciiSafeName(file.name)) {
+        throw new Error(
+          `Unsafe portfolio filename "${file.name}" in ${folder.name}. Keep technical filenames ASCII-only.`,
+        )
+      }
+    }
+
     const descriptionFile = findPrimaryDescription(files)
     if (!descriptionFile) continue
 
+    const metadata = await readProjectMetadata(folderPath)
+    if (metadata?.group && metadata.group !== groupDefinition.group) {
+      throw new Error(
+        `Group mismatch in ${join(groupDefinition.directory, folder.name, 'project.json')}: `
+        + `expected "${groupDefinition.group}", got "${metadata.group}".`,
+      )
+    }
+
     const source = await readFile(join(folderPath, descriptionFile.name), 'utf8')
     const content = Object.fromEntries(
-      locales.map((locale) => [
-        locale,
-        parseLocaleContent(extractLocaleSection(source, locale), folder.name, locale),
-      ]),
+      locales.map((locale) => {
+        const explicitTitle = metadata?.titles?.[locale]
+          ?? titleOverrideForDescription(descriptionFile.name, locale)
+
+        const parsed = parseLocaleContent(
+          extractLocaleSection(source, locale),
+          explicitTitle ?? folder.name,
+          explicitTitle,
+        )
+
+        return [locale, parsed]
+      }),
     )
 
     const images = files
       .filter((file) => supportedImageExtensions.has(extname(file.name).toLowerCase()))
       .map((file) => file.name)
-      .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
+      .sort((a, b) => a.localeCompare(b, 'en', { numeric: true }))
 
     const sourcePath = relative(portfolioRoot, folderPath).split(sep).join('/')
-    const idBase = descriptionFile.name.replace(/\.txt$/i, '').toLowerCase().replace(/[^a-z0-9]+/g, '-')
-    const id = `${groupDefinition.group}-${idBase || fallbackIndex}-${fallbackIndex}`
+    const order = Number.isFinite(Number(metadata?.order)) ? Number(metadata.order) : 900 + fallbackIndex
+    const id = metadata?.id ?? `${groupDefinition.group}-${folder.name}`
+
+    if (!isAsciiSafeName(id)) {
+      throw new Error(`Unsafe project id "${id}" in ${sourcePath}/project.json.`)
+    }
 
     projects.push({
       id,
       group: groupDefinition.group,
-      order: orderFromDescription(descriptionFile, fallbackIndex),
+      order,
       sourcePath,
       images,
       content,
@@ -175,4 +124,5 @@ projects.sort((a, b) => {
 const banner = '// This file is generated by scripts/generate-projects-data.mjs. Do not edit manually.\n'
 await writeFile(outputFile, `${banner}export const projects = ${JSON.stringify(projects, null, 2)}\n`, 'utf8')
 
-console.log(`Generated ${projects.length} portfolio entries -> ${relative(root, outputFile)}`)
+const photoCount = projects.reduce((sum, project) => sum + project.images.length, 0)
+console.log(`Generated ${projects.length} portfolio entries / ${photoCount} images -> ${relative(root, outputFile)}`)

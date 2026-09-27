@@ -1,0 +1,10 @@
+{
+  "id": "projects-hotel-construction-and-renovation",
+  "group": "projects",
+  "order": 3,
+  "titles": {
+    "hy": "Հյուրանոցների կառուցում և վերանորոգում",
+    "ru": "Строительство и реконструкция гостиниц",
+    "en": "Hotel Construction and Renovation"
+  }
+}

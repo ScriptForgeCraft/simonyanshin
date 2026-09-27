@@ -1,0 +1,10 @@
+{
+  "id": "projects-apartment-renovation",
+  "group": "projects",
+  "order": 1,
+  "titles": {
+    "hy": "Բնակարանների վերանորոգում",
+    "ru": "Ремонт квартир",
+    "en": "Apartment Renovation"
+  }
+}
