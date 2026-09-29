@@ -15,9 +15,16 @@ const languageMenu = document.querySelector('[data-language-menu]')
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '')
 
+const pageRoutes = {
+  home: '/',
+  projects: '/projects/',
+  about: '/about/',
+  equipment: '/equipment/',
+}
+
 const buildLocalePath = (targetLocale, targetPage = page) => {
   const localePrefix = targetLocale === 'hy' ? '' : `/${targetLocale}`
-  const pageSuffix = targetPage === 'projects' ? '/projects/' : '/'
+  const pageSuffix = pageRoutes[targetPage] ?? pageRoutes.home
   return `${base}${localePrefix}${pageSuffix}`.replace(/\/+/g, '/')
 }
 
@@ -84,6 +91,14 @@ const applyTranslations = () => {
 
   document.querySelectorAll('[data-projects-link]').forEach((link) => {
     link.href = buildLocalePath(locale, 'projects')
+  })
+
+  document.querySelectorAll('[data-about-link]').forEach((link) => {
+    link.href = buildLocalePath(locale, 'about')
+  })
+
+  document.querySelectorAll('[data-equipment-link]').forEach((link) => {
+    link.href = buildLocalePath(locale, 'equipment')
   })
 
   setMenuToggleLabel(false)

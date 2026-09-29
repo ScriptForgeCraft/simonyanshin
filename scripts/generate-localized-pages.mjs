@@ -16,6 +16,18 @@ const pages = [
     titleKey: 'worksPageTitle',
     metaKey: 'worksMetaDescription',
   },
+  {
+    template: 'about/index.html',
+    output: (locale) => `${locale}/about/index.html`,
+    titleKey: 'aboutPageTitle',
+    metaKey: 'aboutMetaDescription',
+  },
+  {
+    template: 'equipment/index.html',
+    output: (locale) => `${locale}/equipment/index.html`,
+    titleKey: 'equipmentPageTitle',
+    metaKey: 'equipmentMetaDescription',
+  },
 ]
 
 for (const page of pages) {

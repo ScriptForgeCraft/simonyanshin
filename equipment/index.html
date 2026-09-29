@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="hy">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#171717" />
+    <meta name="description" content="SimonyanShin-ի շինարարական աշխատանքներում կիրառվող տեխնիկան՝ CAT և SHACMAN մեքենաներ ու բարձրության վրա աշխատանքի տեխնիկա։" data-i18n-content="equipmentMetaDescription" />
+    <title>SimonyanShin — Տեխնիկա</title>
+  </head>
+  <body class="content-page" data-page="equipment" data-title-key="equipmentPageTitle">
+    <svg class="svg-sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+      <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-5-5 5 5-5 5"/></symbol>
+      <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
+      <symbol id="icon-close" viewBox="0 0 24 24"><path d="m5 5 14 14M19 5 5 19"/></symbol>
+      <symbol id="icon-chevron-left" viewBox="0 0 24 24"><path d="m15 5-7 7 7 7"/></symbol>
+      <symbol id="icon-phone" viewBox="0 0 24 24"><path d="M7 3h3l2 5-2 2c1 2 3 4 5 5l2-2 5 2v3c0 2-2 3-4 3C10 21 3 14 3 6c0-2 2-3 4-3Z"/></symbol>
+      <symbol id="icon-mail" viewBox="0 0 24 24"><path d="M3 5h18v14H3V5Zm0 2 9 6 9-6"/></symbol>
+      <symbol id="icon-pin" viewBox="0 0 24 24"><path d="M20 10c0 5-8 11-8 11s-8-6-8-11a8 8 0 1 1 16 0Zm-8 3a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/></symbol>
+      <symbol id="icon-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
+      <symbol id="icon-linkedin" viewBox="0 0 24 24"><path d="M5 9v10m0-14v.01M10 19v-6a4 4 0 0 1 8 0v6m-8-6v6m0-6a4 4 0 0 1 8 0M3 3h18v18H3V3Z"/></symbol>
+      <symbol id="icon-telegram" viewBox="0 0 24 24"><path d="m21 4-3 16-6-5-3 3v-5l9-8-11 7-4-2 18-6Z"/></symbol>
+    </svg>
+
+    <header class="site-header" data-header>
+      <div class="container header-inner">
+        <a class="brand" href="/" data-home-link aria-label="SimonyanShin գլխավոր էջ" data-i18n-aria-label="brandHome">
+          <svg class="brand-mark" viewBox="0 0 45 47" aria-hidden="true"><path d="m22.5 2 18 10.4v21.1L22.5 44 4.5 33.5V12.4L22.5 2Z"/><path d="m14 14 8.5 4.9V29l8.5 4.9 7-4.1M14 23.8l8.5 4.9 8.5-4.9M22.5 8v10.9l-8.5 4.9V34"/></svg>
+          <span class="brand-copy"><strong>SIMONYANSHIN</strong><small data-i18n="brandTagline">ՇԻՆԱՐԱՐԱԿԱՆ ԸՆԿԵՐՈՒԹՅՈՒՆ</small></span>
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" data-menu-toggle><svg aria-hidden="true"><use href="#icon-menu" /></svg><span class="visually-hidden" data-i18n="menuOpen">Բացել ընտրացանկը</span></button>
+        <nav id="primary-navigation" class="primary-nav" aria-label="Հիմնական ընտրացանկ" data-menu>
+          <a href="/" data-home-link data-i18n="navHome">Գլխավոր</a>
+          <a href="/about/" data-about-link data-i18n="navAbout">Մեր մասին</a>
+          <a href="/#services" data-home-anchor="services" data-i18n="navServices">Ծառայություններ</a>
+          <a href="/projects/" data-projects-link data-i18n="navProjects">Նախագծեր</a>
+          <a class="is-current" href="/equipment/" data-equipment-link data-i18n="navEquipment">Տեխնիկա</a>
+          <a href="/#contact" data-home-anchor="contact" data-i18n="navContact">Կապ</a>
+        </nav>
+        <div class="language-selector" data-language-selector>
+          <button class="language-select" type="button" aria-expanded="false" aria-controls="language-menu" data-language-toggle data-i18n-aria-label="languageMenu"><span data-current-language>HY</span><span>⌄</span></button>
+          <div id="language-menu" class="language-menu" data-language-menu><a href="/equipment/" hreflang="hy" lang="hy" data-locale-link="hy">Հայ</a><a href="/ru/equipment/" hreflang="ru" lang="ru" data-locale-link="ru">RU</a><a href="/en/equipment/" hreflang="en" lang="en" data-locale-link="en">EN</a></div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="inner-hero equipment-hero" aria-labelledby="equipment-hero-title">
+        <div class="inner-hero-content">
+          <a class="inner-back-link" href="/" data-home-link><svg aria-hidden="true"><use href="#icon-chevron-left" /></svg><span data-i18n="worksBackHome">ԳԼԽԱՎՈՐ ԷՋ</span></a>
+          <p class="inner-eyebrow" data-i18n="equipmentEyebrow">SIMONYANSHIN / ՏԵԽՆԻԿԱ</p>
+          <h1 id="equipment-hero-title" data-i18n="equipmentHeroTitle">ՏԵԽՆԻԿԱ, ՈՐՆ ՕԳՏԱԳՈՐԾՈՒՄ ԵՆՔ ԱՇԽԱՏԱՆՔՆԵՐՈՒՄ</h1>
+          <p class="inner-hero-description" data-i18n="equipmentHeroDescription">Շինհրապարակում տարբեր աշխատանքների համար կիրառում ենք մասնագիտացված տեխնիկա՝ հողային աշխատանքներից և բեռնափոխադրումից մինչև բարձրության վրա մոնտաժ։</p>
+        </div>
+      </section>
+
+      <section class="content-section equipment-intro" aria-labelledby="equipment-intro-title">
+        <div class="container content-intro-grid">
+          <div><p class="content-kicker" data-i18n="equipmentIntroKicker">ՄԵՐ ԱՇԽԱՏԱՆՔԱՅԻՆ ՏԵԽՆԻԿԱՆ</p><h2 id="equipment-intro-title" class="content-display-title" data-i18n="equipmentIntroTitle">ՅՈՒՐԱՔԱՆՉՅՈՒՐ ԱՇԽԱՏԱՆՔԻ ՀԱՄԱՐ՝ ՀԱՄԱՊԱՏԱՍԽԱՆ ԼՈՒԾՈՒՄ</h2><div class="content-rule" aria-hidden="true"></div></div>
+          <div class="content-copy"><p data-i18n="equipmentIntroText">Ստորև ներկայացված է այն տեխնիկան, որը կիրառում ենք շինարարական աշխատանքների տարբեր փուլերում։ Յուրաքանչյուր մեքենայի նկարագրությունը ցույց է տալիս դրա հիմնական կիրառությունը շինհրապարակում։</p></div>
+        </div>
+      </section>
+
+      <section class="equipment-list-section" aria-label="Շինարարական տեխնիկա">
+        <div class="container equipment-list">
+          <article class="equipment-card">
+            <div class="equipment-media"><img src="/equipment/cat-434-432-backhoe.jpg" alt="CAT 434 և CAT 432 էքսկավատոր-բեռնիչներ" data-i18n-alt="equipmentCatAlt" /></div>
+            <div class="equipment-body"><span class="equipment-index">01</span><p class="equipment-type" data-i18n="equipmentCatType">ՀՈՂԱՅԻՆ ԵՎ ԲԵՌՆՄԱՆ ԱՇԽԱՏԱՆՔՆԵՐ</p><h2 data-i18n="equipmentCatTitle">Էքսկավատոր-բեռնիչներ CAT 434 և CAT 432</h2><p data-i18n="equipmentCatText">Մեր տեխնիկայի կազմում առկա են CAT 434 և CAT 432 էքսկավատոր-բեռնիչներ, որոնք կիրառվում են հողային և բեռնման աշխատանքներում։ Դրանք օգտագործում ենք հիմքերի փոսորակների ու խրամուղիների փորման, տարածքների հարթեցման, ինչպես նաև հողի, ավազի և խճի բեռնման ու շինհրապարակի ներսում տեղափոխման համար։</p></div>
+          </article>
+
+          <article class="equipment-card">
+            <div class="equipment-media"><img src="/equipment/aerial-work-platform.jpg" alt="Ավտոաշտարակ" data-i18n-alt="equipmentAerialAlt" /></div>
+            <div class="equipment-body"><span class="equipment-index">02</span><p class="equipment-type" data-i18n="equipmentAerialType">ԲԱՐՁՐՈՒԹՅԱՆ ՎՐԱ ԱՇԽԱՏԱՆՔՆԵՐ</p><h2 data-i18n="equipmentAerialTitle">Ավտոաշտարակ</h2><p data-i18n="equipmentAerialText">Բարձրության վրա աշխատանքներ կատարելու համար նախատեսված տեխնիկա՝ բարձրացվող աշխատանքային հարթակով։ Կիրառվում է շենքերի ճակատների և տանիքների սպասարկման, արտաքին լուսավորության տեղադրման ու վերանորոգման, ինչպես նաև բարձրության վրա իրականացվող մոնտաժային աշխատանքների համար։</p></div>
+          </article>
+
+          <article class="equipment-card">
+            <div class="equipment-media"><img src="/equipment/cat-mini-loader.jpg" alt="Մինի բեռնիչ CAT" data-i18n-alt="equipmentMiniAlt" /></div>
+            <div class="equipment-body"><span class="equipment-index">03</span><p class="equipment-type" data-i18n="equipmentMiniType">ԿՈՄՊԱԿՏ ԲԵՌՆՈՒՄ ԵՎ ՔԱՆԴՈՒՄ</p><h2 data-i18n="equipmentMiniTitle">Մինի բեռնիչ CAT</h2><p data-i18n="equipmentMiniText">Կոմպակտ և մանևրունակ տեխնիկա՝ սահմանափակ տարածքներում շինարարական աշխատանքներ կատարելու համար։ Կիրառվում է հողի, ավազի և խճի բեռնման ու տեղափոխման, տարածքների հարթեցման և շինհրապարակների մաքրման աշխատանքներում։ Հիդրավլիկ մուրճով համալրված տարբերակն օգտագործվում է նաև բետոնի և այլ կոշտ ծածկույթների քանդման համար։</p></div>
+          </article>
+
+          <article class="equipment-card">
+            <div class="equipment-media"><img src="/equipment/shacman-dump-truck.jpg" alt="Ինքնաթափ բեռնատար SHACMAN" data-i18n-alt="equipmentDumpAlt" /></div>
+            <div class="equipment-body"><span class="equipment-index">04</span><p class="equipment-type" data-i18n="equipmentDumpType">ԲԵՌՆԱՓՈԽԱԴՐՈՒՄ ԵՎ ԻՆՔՆԱԹԱՓՈՒՄ</p><h2 data-i18n="equipmentDumpTitle">Ինքնաթափ բեռնատար SHACMAN</h2><p data-i18n="equipmentDumpText">Նախատեսված է հողի, ավազի, խճի և այլ սորուն շինանյութերի տեղափոխման ու ինքնաթափ բեռնաթափման համար։ Կիրառվում է շինհրապարակների նյութական մատակարարման, հողային աշխատանքների ընթացքում գոյացած զանգվածների և շինարարական աղբի հեռացման աշխատանքներում։</p></div>
+          </article>
+
+          <article class="equipment-card">
+            <div class="equipment-media"><img src="/equipment/shacman-crane-truck.jpg" alt="Կռունկ-մանիպուլյատորով բեռնատար SHACMAN" data-i18n-alt="equipmentCraneAlt" /></div>
+            <div class="equipment-body"><span class="equipment-index">05</span><p class="equipment-type" data-i18n="equipmentCraneType">ՓՈԽԱԴՐՈՒՄ, ԲԱՐՁՐԱՑՈՒՄ ԵՎ ՏԵՂԱԴՐՈՒՄ</p><h2 data-i18n="equipmentCraneTitle">Կռունկ-մանիպուլյատորով բեռնատար SHACMAN</h2><p data-i18n="equipmentCraneText">Համատեղում է բեռների փոխադրման, բեռնման և բեռնաթափման հնարավորությունները։ Կիրառվում է շինանյութերի, սարքավորումների և շինարարական կոնստրուկցիաների տեղափոխման, ինչպես նաև շինհրապարակում դրանց բարձրացման ու անհրաժեշտ դիրքում տեղադրման համար։</p></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="content-cta">
+        <div class="container content-cta-inner">
+          <div><h2 data-i18n="equipmentCtaTitle">ՊԼԱՆԱՎՈՐՈՒՄ ԵՔ ՇԻՆԱՐԱՐԱԿԱՆ ԱՇԽԱՏԱՆՔՆԵՐ</h2><p data-i18n="equipmentCtaText">Կապվեք մեզ հետ՝ նախագծի ծավալը, աշխատանքի փուլերը և անհրաժեշտ տեխնիկական լուծումները քննարկելու համար։</p></div>
+          <a class="button button-gold" href="/#contact" data-home-anchor="contact"><span data-i18n="discussProject">ՔՆՆԱՐԿԵԼ ՆԱԽԱԳԻԾԸ</span><svg aria-hidden="true"><use href="#icon-arrow" /></svg></a>
+        </div>
+      </section>
+
+      <section id="contact" class="contact" aria-labelledby="contact-title">
+        <div class="contact-image" role="img" aria-label="Կառուցվող շինություն" data-i18n-aria-label="contactImage"></div>
+        <div class="contact-content">
+          <div class="contact-copy"><h2 id="contact-title" data-i18n="contactTitle">ՍԿՍԵՆՔ ՁԵՐ ՆԱԽԱԳԻԾԸ</h2><p data-i18n="contactDescription">Ունե՞ք կառուցման, վերանորոգման կամ վերականգնման նախագիծ։ Կապվեք մեզ հետ, և մեր թիմը կքննարկի հաջորդ քայլերը։</p><a class="button button-gold" href="mailto:info@simonyanshin.am"><span data-i18n="discussProject">ՔՆՆԱՐԿԵԼ ՆԱԽԱԳԻԾԸ</span><svg aria-hidden="true"><use href="#icon-arrow" /></svg></a></div>
+          <address class="contact-details"><a href="tel:+37494405060"><svg aria-hidden="true"><use href="#icon-phone" /></svg><span>+374 94 40 50 60</span></a><a href="mailto:info@simonyanshin.am"><svg aria-hidden="true"><use href="#icon-mail" /></svg><span>info@simonyanshin.am</span></a><p><svg aria-hidden="true"><use href="#icon-pin" /></svg><span data-i18n="contactLocation">Երևան, Հայաստան</span></p><div class="socials" aria-label="Սոցիալական ցանցեր"><a href="#contact" aria-label="Instagram"><svg><use href="#icon-instagram" /></svg></a><a href="#contact" aria-label="LinkedIn"><svg><use href="#icon-linkedin" /></svg></a><a href="#contact" aria-label="Telegram"><svg><use href="#icon-telegram" /></svg></a></div></address>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="/src/content-pages.js"></script>
+  </body>
+</html>
