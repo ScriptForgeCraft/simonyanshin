@@ -1,5 +1,6 @@
 import './style.css'
 import { locales, translations } from './i18n.js'
+import { contactDetails } from './site-data.js'
 
 const localeFromPath = window.location.pathname.match(/\/(ru|en)(?:\/|$)/)?.[1]
 const locale = translations[localeFromPath]
@@ -40,6 +41,31 @@ const setMenuToggleLabel = (isOpen) => {
   const label = isOpen ? text.menuClose : text.menuOpen
 
   toggle.innerHTML = `<svg aria-hidden="true"><use href="#${icon}" /></svg><span class="visually-hidden">${label}</span>`
+}
+
+const applyContactDetails = () => {
+  document.querySelectorAll('[data-contact-phone]').forEach((element) => {
+    element.href = contactDetails.phoneHref
+  })
+  document.querySelectorAll('[data-contact-phone-text]').forEach((element) => {
+    element.textContent = contactDetails.phone
+  })
+  document.querySelectorAll('[data-contact-email]').forEach((element) => {
+    element.href = contactDetails.emailHref
+  })
+  document.querySelectorAll('[data-contact-email-text]').forEach((element) => {
+    element.textContent = contactDetails.email
+  })
+  document.querySelectorAll('[data-social-link]').forEach((element) => {
+    const href = contactDetails.socialLinks[element.dataset.socialLink]
+    if (!href) {
+      element.remove()
+      return
+    }
+    element.href = href
+    element.target = '_blank'
+    element.rel = 'noopener noreferrer'
+  })
 }
 
 const applyTranslations = () => {
@@ -118,6 +144,7 @@ const closeLanguageMenu = () => {
 }
 
 applyTranslations()
+applyContactDetails()
 
 if (toggle && menu) {
   toggle.addEventListener('click', () => {

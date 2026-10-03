@@ -1,6 +1,7 @@
 {
   "id": "projects-apartment-renovation",
   "group": "projects",
+  "kind": "service",
   "order": 1,
   "titles": {
     "hy": "Բնակարանների վերանորոգում",

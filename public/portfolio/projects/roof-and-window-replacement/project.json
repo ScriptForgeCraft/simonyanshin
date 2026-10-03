@@ -1,6 +1,7 @@
 {
   "id": "projects-roof-and-window-replacement",
   "group": "projects",
+  "kind": "service",
   "order": 722,
   "titles": {
     "hy": "Տանիքների և պատուհանների փոխարինում",

@@ -3,6 +3,7 @@ export const projects = [
   {
     "id": "projects-apartment-renovation",
     "group": "projects",
+    "kind": "service",
     "order": 1,
     "sourcePath": "projects/apartment-renovation",
     "images": [
@@ -57,6 +58,7 @@ export const projects = [
   {
     "id": "projects-restaurant-construction-and-renovation",
     "group": "projects",
+    "kind": "service",
     "order": 2,
     "sourcePath": "projects/restaurant-construction-and-renovation",
     "images": [
@@ -97,6 +99,7 @@ export const projects = [
   {
     "id": "projects-hotel-construction-and-renovation",
     "group": "projects",
+    "kind": "service",
     "order": 3,
     "sourcePath": "projects/hotel-construction-and-renovation",
     "images": [
@@ -134,6 +137,7 @@ export const projects = [
   {
     "id": "projects-structural-reinforcement-and-rebuilding-of-the-walls-of-the-tandzaparakh-monastic-complex",
     "group": "projects",
+    "kind": "project",
     "order": 4,
     "sourcePath": "projects/structural-reinforcement-and-rebuilding-of-the-walls-of-the-tandzaparakh-monastic-complex",
     "images": [
@@ -175,6 +179,7 @@ export const projects = [
   {
     "id": "projects-restoration-of-the-holy-mother-of-god-church-in-artsvanik",
     "group": "projects",
+    "kind": "project",
     "order": 5,
     "sourcePath": "projects/restoration-of-the-holy-mother-of-god-church-in-artsvanik",
     "images": [
@@ -213,6 +218,7 @@ export const projects = [
   {
     "id": "projects-restoration-of-the-1886-bridge-in-shikahogh-and-improvement-of-the-surrounding-area",
     "group": "projects",
+    "kind": "project",
     "order": 6,
     "sourcePath": "projects/restoration-of-the-1886-bridge-in-shikahogh-and-improvement-of-the-surrounding-area",
     "images": [
@@ -252,6 +258,7 @@ export const projects = [
   {
     "id": "projects-restoration-of-saint-stephen-the-protomartyr-church-in-shikahogh-and-improvement-of-the-surrounding-area",
     "group": "projects",
+    "kind": "project",
     "order": 7,
     "sourcePath": "projects/restoration-of-saint-stephen-the-protomartyr-church-in-shikahogh-and-improvement-of-the-surrounding-area",
     "images": [
@@ -293,6 +300,7 @@ export const projects = [
   {
     "id": "projects-replacement-of-the-door-lintel-at-anapastanats-monastery-in-meghri",
     "group": "projects",
+    "kind": "project",
     "order": 8,
     "sourcePath": "projects/replacement-of-the-door-lintel-at-anapastanats-monastery-in-meghri",
     "images": [
@@ -329,6 +337,7 @@ export const projects = [
   {
     "id": "projects-reconstruction-of-the-spiritual-education-center-and-remedial-works-in-the-museum",
     "group": "projects",
+    "kind": "project",
     "order": 9,
     "sourcePath": "projects/reconstruction-of-the-spiritual-education-center-and-remedial-works-in-the-museum",
     "images": [
@@ -388,6 +397,7 @@ export const projects = [
   {
     "id": "projects-relocation-of-the-memorial-in-yeghvard-dedicated-to-those-who-fell-in-the-patriotic-and-karabakh-wars",
     "group": "projects",
+    "kind": "project",
     "order": 10,
     "sourcePath": "projects/relocation-of-the-memorial-in-yeghvard-dedicated-to-those-who-fell-in-the-patriotic-and-karabakh-wars",
     "images": [
@@ -425,6 +435,7 @@ export const projects = [
   {
     "id": "projects-restoration-of-the-holy-mother-of-god-church-in-yeghvard",
     "group": "projects",
+    "kind": "project",
     "order": 11,
     "sourcePath": "projects/restoration-of-the-holy-mother-of-god-church-in-yeghvard",
     "images": [
@@ -463,6 +474,7 @@ export const projects = [
   {
     "id": "projects-restoration-of-the-tatev-oil-mill-2010",
     "group": "projects",
+    "kind": "project",
     "order": 12,
     "sourcePath": "projects/restoration-of-the-tatev-oil-mill-2010",
     "images": [
@@ -474,7 +486,7 @@ export const projects = [
         "title": "Տաթևի ձիթհանի վերականգնում — 2010 թ.",
         "blocks": [
           {
-            "body": "2010 թվականին իրականացրել ենք Տաթևի ձիթհանի վերականգնման աշխատանքները՝ պահպանելով կառույցի ավանդական տեսքն ու ինքնատիպությունը։ Այս նախագծով մեր ներդրումն ենք ունեցել նաև անցյալի արտադրական մշակույթի պահպանման գործում․ ձիթհանը վկայում է տեղական կենցաղի, արհեստի և կառուցողական լուծումների մասին։"
+            "body": "Տաթևի ձիթհանի վերականգնման նախագիծը վերաբերում է 2010 թվականին։ Կառույցի ավանդական տեսքի և ինքնատիպության պահպանումը, ինչպես նաև պատմական արտադրական մշակույթի արժեքը դրա նկարագրության հիմնական շեշտադրումներն են։"
           }
         ]
       },
@@ -482,7 +494,7 @@ export const projects = [
         "title": "Реставрация Татевской маслобойни — 2010 г.",
         "blocks": [
           {
-            "body": "В 2010 году мы выполнили реставрацию Татевской маслобойни, сохранив традиционный облик и характер сооружения. Этот проект также стал вкладом в сохранение исторической производственной культуры: маслобойня рассказывает о местном быте, ремеслах и традиционных инженерно-строительных решениях."
+            "body": "Проект реставрации Татевской маслобойни относится к 2010 году. Его описание акцентирует сохранение традиционного облика и характера сооружения, а также ценность исторической производственной культуры."
           }
         ]
       },
@@ -490,7 +502,7 @@ export const projects = [
         "title": "Restoration of the Tatev Oil Mill — 2010",
         "blocks": [
           {
-            "body": "In 2010, we restored the Tatev Oil Mill while preserving the structure’s traditional appearance and distinctive character. The project also contributed to safeguarding historic production culture: the oil mill provides insight into local daily life, craftsmanship, and traditional engineering and construction methods."
+            "body": "The Tatev Oil Mill restoration project dates to 2010. Its description emphasizes preserving the structure’s traditional appearance and distinctive character, as well as the value of historic production culture."
           }
         ]
       }
@@ -499,6 +511,7 @@ export const projects = [
   {
     "id": "projects-restoration-of-kotavank-and-improvement-of-the-surrounding-area",
     "group": "projects",
+    "kind": "project",
     "order": 13,
     "sourcePath": "projects/restoration-of-kotavank-and-improvement-of-the-surrounding-area",
     "images": [
@@ -541,6 +554,7 @@ export const projects = [
   {
     "id": "projects-restoration-of-the-gavit-at-anapastanats-monastery-in-meghri-ongoing-work",
     "group": "projects",
+    "kind": "project",
     "order": 14,
     "sourcePath": "projects/restoration-of-the-gavit-at-anapastanats-monastery-in-meghri-ongoing-work",
     "images": [
@@ -595,6 +609,7 @@ export const projects = [
   {
     "id": "projects-restoration-of-prince-toros-spring-in-yeghvard-and-improvement-of-the-surrounding-area",
     "group": "projects",
+    "kind": "project",
     "order": 15,
     "sourcePath": "projects/restoration-of-prince-toros-spring-in-yeghvard-and-improvement-of-the-surrounding-area",
     "images": [
@@ -641,6 +656,7 @@ export const projects = [
   {
     "id": "projects-installation-of-bells-at-the-seminary-on-the-akhtamar-peninsula",
     "group": "projects",
+    "kind": "project",
     "order": 16,
     "sourcePath": "projects/installation-of-bells-at-the-seminary-on-the-akhtamar-peninsula",
     "images": [
@@ -677,6 +693,7 @@ export const projects = [
   {
     "id": "projects-creation-and-installation-of-the-cross-and-eagles-khachkar-at-the-kapan-fraternal-memorial",
     "group": "projects",
+    "kind": "project",
     "order": 17,
     "sourcePath": "projects/creation-and-installation-of-the-cross-and-eagles-khachkar-at-the-kapan-fraternal-memorial",
     "images": [
@@ -712,6 +729,7 @@ export const projects = [
   {
     "id": "projects-restoration-and-site-improvement-of-saint-hripsime-church-in-old-goris",
     "group": "projects",
+    "kind": "project",
     "order": 18,
     "sourcePath": "projects/restoration-and-site-improvement-of-saint-hripsime-church-in-old-goris",
     "images": [
@@ -750,6 +768,7 @@ export const projects = [
   {
     "id": "projects-kajaran",
     "group": "projects",
+    "kind": "project",
     "order": 19,
     "sourcePath": "projects/kajaran",
     "images": [
@@ -764,33 +783,22 @@ export const projects = [
     "content": {
       "hy": {
         "title": "Քաջարան",
-        "blocks": [
-          {
-            "body": "Սկզբնական 19.txt ֆայլը դատարկ էր, ուստի նախագծի նկարագրությունը չի լրացվել՝ չտրամադրված տեղեկություններ չհորինելու համար։"
-          }
-        ]
+        "blocks": []
       },
       "ru": {
         "title": "Каджаран",
-        "blocks": [
-          {
-            "body": "Исходный файл 19.txt был пустым, поэтому описание проекта не добавлено, чтобы не придумывать отсутствующие факты."
-          }
-        ]
+        "blocks": []
       },
       "en": {
         "title": "Kajaran",
-        "blocks": [
-          {
-            "body": "The original 19.txt file was empty, so no project description has been added in order to avoid inventing information that was not provided."
-          }
-        ]
+        "blocks": []
       }
     }
   },
   {
     "id": "projects-restoration-of-the-holy-mother-of-god-church-in-tsovasar",
     "group": "projects",
+    "kind": "project",
     "order": 20,
     "sourcePath": "projects/restoration-of-the-holy-mother-of-god-church-in-tsovasar",
     "images": [
@@ -827,6 +835,7 @@ export const projects = [
   {
     "id": "projects-restoration-of-saint-mary-church-in-hamletavan-achakhlu-and-improvement-of-the-surrounding-area",
     "group": "projects",
+    "kind": "project",
     "order": 21,
     "sourcePath": "projects/restoration-of-saint-mary-church-in-hamletavan-achakhlu-and-improvement-of-the-surrounding-area",
     "images": [
@@ -872,6 +881,7 @@ export const projects = [
   {
     "id": "projects-other-completed-projects",
     "group": "projects",
+    "kind": "project",
     "order": 22,
     "sourcePath": "projects/other-completed-projects",
     "images": [],
@@ -968,6 +978,7 @@ export const projects = [
   {
     "id": "projects-construction-of-private-houses-in-the-republic-of-armenia",
     "group": "projects",
+    "kind": "service",
     "order": 702,
     "sourcePath": "projects/construction-of-private-houses-in-the-republic-of-armenia",
     "images": [
@@ -1017,6 +1028,7 @@ export const projects = [
   {
     "id": "projects-roof-and-window-replacement",
     "group": "projects",
+    "kind": "service",
     "order": 722,
     "sourcePath": "projects/roof-and-window-replacement",
     "images": [
@@ -1052,6 +1064,7 @@ export const projects = [
   {
     "id": "machinery-historical-machinery-of-the-tatev-oil-mill",
     "group": "machinery",
+    "kind": "machinery",
     "order": 725,
     "sourcePath": "historical-machinery/historical-machinery-of-the-tatev-oil-mill",
     "images": [

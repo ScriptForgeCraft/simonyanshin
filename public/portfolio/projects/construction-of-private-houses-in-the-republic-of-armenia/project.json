@@ -1,6 +1,7 @@
 {
   "id": "projects-construction-of-private-houses-in-the-republic-of-armenia",
   "group": "projects",
+  "kind": "service",
   "order": 702,
   "titles": {
     "hy": "Առանձնատների կառուցում Հայաստանի Հանրապետությունում",

@@ -89,7 +89,7 @@ svg { display: block; }
 .benefit-card p { margin: 8px 0 0; font-size: 10px; line-height: 1.5; }
 
 .stats { color: #fff; background: linear-gradient(105deg, #1a1a1a, #2b2a29, #151515); }
-.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
 .stat { min-height: 77px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; border-right: 1px solid rgba(255,255,255,.24); text-align: center; }
 .stat:last-child { border-right: 0; }
 .stat strong { color: var(--gold-light); font-size: 23px; line-height: 1; }
@@ -108,6 +108,7 @@ svg { display: block; }
 .socials { display: flex; gap: 15px; margin-top: 2px; }
 .socials a { display: block; }
 .socials svg { width: 17px; height: 17px; }
+.social-monogram { display: grid; width: 17px; height: 17px; place-items: center; border: 1px solid currentColor; border-radius: 50%; font-size: 6px; font-weight: 700; letter-spacing: -.3px; line-height: 1; }
 
 @media (max-width: 760px) {
   .container { width: min(100% - 40px, 620px); }
@@ -139,7 +140,7 @@ svg { display: block; }
   .stats-grid { grid-template-columns: 1fr 1fr; }
   .stat { border-bottom: 1px solid rgba(255,255,255,.24); }
   .stat:nth-child(2n) { border-right: 0; }
-  .stat:nth-last-child(-n + 2) { border-bottom: 0; }
+  .stat:last-child { grid-column: 1 / -1; border-right: 0; border-bottom: 0; }
   .contact { grid-template-columns: 1fr; }
   .contact-image { min-height: 210px; }
   .contact-content { grid-template-columns: 1fr; gap: 28px; padding: 35px 20px 38px; }

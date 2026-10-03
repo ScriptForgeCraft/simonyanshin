@@ -28,7 +28,6 @@ body.is-overlay-open { overflow: hidden; }
 .works-hero-content {
   position: relative;
   z-index: 1;
-  width: 100%;
   padding-top: 126px;
   padding-bottom: 48px;
   display: flex;
@@ -125,6 +124,8 @@ body.is-overlay-open { overflow: hidden; }
 .works-filter.is-active .works-filter-count { background: rgba(255, 255, 255, .1); color: var(--gold-light); }
 
 .works-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 34px 18px; }
+.works-services { padding: 0 0 88px; background: #f6f5f1; }
+.works-services-grid { margin-top: 30px; }
 .work-card { min-width: 0; }
 .work-card-button { width: 100%; padding: 0; border: 0; background: transparent; color: inherit; text-align: left; cursor: pointer; }
 .work-card-media { position: relative; display: block; overflow: hidden; aspect-ratio: 1.34 / 1; background: #252525; }
@@ -132,7 +133,6 @@ body.is-overlay-open { overflow: hidden; }
 .work-card-button:hover .work-card-media img, .work-card-button:focus-visible .work-card-media img { transform: scale(1.035); }
 .work-card-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.34), transparent 42%, rgba(0,0,0,.45)); }
 .work-card-media-empty { background: radial-gradient(circle at 80% 20%, rgba(189,146,80,.24), transparent 34%), linear-gradient(135deg, #282726, #141414); }
-.work-card-monogram { position: absolute; right: 22px; bottom: -24px; color: rgba(210,165,97,.15); font-size: 160px; line-height: 1; font-weight: 700; }
 .work-card-media-top { position: absolute; top: 12px; right: 12px; left: 12px; display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
 .work-card-type, .work-card-photo-count { padding: 6px 8px; background: rgba(18,18,18,.72); backdrop-filter: blur(7px); color: #fff; font-size: 8px; font-weight: 700; letter-spacing: .5px; }
 .work-card-photo-count { color: var(--gold-light); }
@@ -222,10 +222,11 @@ body.is-overlay-open { overflow: hidden; }
   .works-hero { min-height: 600px; background-position: 67% center; }
   .works-hero-content { padding-top: 118px; padding-bottom: 34px; }
   .works-back-link { margin-bottom: 43px; }
-  .works-hero h1 { font-size: clamp(34px, 11vw, 50px); }
+  .works-hero h1 { max-width: 100%; font-size: clamp(34px, 9vw, 40px); }
   .works-hero-description { max-width: 430px; font-size: 14px; }
   .works-disciplines { padding-top: 45px; }
   .works-collection { padding: 54px 0 64px; }
+  .works-services { padding-bottom: 64px; }
   .works-section-header { padding-bottom: 23px; }
   .works-section-header h2 { font-size: clamp(23px, 7vw, 32px); }
   .works-toolbar { margin-top: 19px; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 3px; scrollbar-width: none; }

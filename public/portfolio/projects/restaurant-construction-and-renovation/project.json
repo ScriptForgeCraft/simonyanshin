@@ -1,6 +1,7 @@
 {
   "id": "projects-restaurant-construction-and-renovation",
   "group": "projects",
+  "kind": "service",
   "order": 2,
   "titles": {
     "hy": "Ռեստորանների կառուցում և վերանորոգում",

@@ -100,14 +100,22 @@ for (const groupDefinition of groupDefinitions) {
     const sourcePath = relative(portfolioRoot, folderPath).split(sep).join('/')
     const order = Number.isFinite(Number(metadata?.order)) ? Number(metadata.order) : 900 + fallbackIndex
     const id = metadata?.id ?? `${groupDefinition.group}-${folder.name}`
+    const kind = groupDefinition.group === 'machinery'
+      ? 'machinery'
+      : (metadata?.kind ?? 'project')
 
     if (!isAsciiSafeName(id)) {
       throw new Error(`Unsafe project id "${id}" in ${sourcePath}/project.json.`)
     }
 
+    if (!['project', 'service', 'machinery'].includes(kind)) {
+      throw new Error(`Invalid portfolio kind "${kind}" in ${sourcePath}/project.json.`)
+    }
+
     projects.push({
       id,
       group: groupDefinition.group,
+      kind,
       order,
       sourcePath,
       images,

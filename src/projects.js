@@ -3,6 +3,7 @@ import { locale, text } from './main.js'
 import { projects } from './projects-data.generated.js'
 
 const grid = document.querySelector('[data-project-grid]')
+const serviceGrid = document.querySelector('[data-service-grid]')
 const filterButtons = [...document.querySelectorAll('[data-work-filter]')]
 const modal = document.querySelector('[data-project-modal]')
 const modalTitle = document.querySelector('[data-project-title]')
@@ -45,11 +46,23 @@ const assetUrl = (project, imageName) => {
 
 const firstBody = (project) => localizedContent(project).blocks.find((block) => block.body)?.body ?? ''
 
-const groupLabel = (project) => (
-  project.group === 'machinery' ? text.worksMachineryLabel : text.worksProjectLabel
-)
+const groupLabel = (project) => {
+  if (project.kind === 'machinery') return text.worksMachineryLabel
+  if (project.kind === 'service') return text.worksServiceLabel
+  return text.worksProjectLabel
+}
 
-const photoLabel = (count) => `${count} ${text.worksPhotoLabel}`
+const photoLabel = (count) => {
+  const category = new Intl.PluralRules(locale).select(count)
+  const template = text[`worksPhotoCount${category[0].toUpperCase()}${category.slice(1)}`]
+    ?? text.worksPhotoCountOther
+    ?? `${count} ${text.worksPhotoLabel}`
+  return template.replace('{count}', String(count))
+}
+
+const actionLabel = (project) => (
+  project.kind === 'service' ? text.worksOpenService : text.worksOpenProject
+)
 
 const createIcon = (id) => {
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
@@ -62,9 +75,9 @@ const createIcon = (id) => {
 
 const renderCounts = () => {
   const counts = {
-    all: projects.length,
-    projects: projects.filter((project) => project.group === 'projects').length,
-    machinery: projects.filter((project) => project.group === 'machinery').length,
+    all: projects.filter((project) => project.kind !== 'service').length,
+    projects: projects.filter((project) => project.kind === 'project').length,
+    machinery: projects.filter((project) => project.kind === 'machinery').length,
   }
 
   Object.entries(counts).forEach(([key, value]) => {
@@ -82,7 +95,7 @@ const createProjectCard = (project, index) => {
   const button = document.createElement('button')
   button.type = 'button'
   button.className = 'work-card-button'
-  button.setAttribute('aria-label', `${text.worksOpenProject}: ${content.title}`)
+  button.setAttribute('aria-label', `${actionLabel(project)}: ${content.title}`)
   button.addEventListener('click', () => openProject(project, button))
 
   const media = document.createElement('span')
@@ -95,12 +108,11 @@ const createProjectCard = (project, index) => {
     image.loading = index < 6 ? 'eager' : 'lazy'
     image.decoding = 'async'
     if (index < 3) image.fetchPriority = 'high'
+    image.addEventListener('error', () => {
+      image.remove()
+      media.classList.add('work-card-media-empty')
+    }, { once: true })
     media.append(image)
-  } else {
-    const monogram = document.createElement('span')
-    monogram.className = 'work-card-monogram'
-    monogram.textContent = 'S'
-    media.append(monogram)
   }
 
   const mediaShade = document.createElement('span')
@@ -136,16 +148,20 @@ const createProjectCard = (project, index) => {
   title.className = 'work-card-title'
   title.textContent = content.title
 
-  const summary = document.createElement('span')
-  summary.className = 'work-card-summary'
-  summary.textContent = firstBody(project)
-
   const action = document.createElement('span')
   action.className = 'work-card-action'
-  action.textContent = text.worksOpenProject
+  action.textContent = actionLabel(project)
   action.append(createIcon('icon-arrow'))
 
-  body.append(title, summary, action)
+  body.append(title)
+  const summaryText = firstBody(project)
+  if (summaryText) {
+    const summary = document.createElement('span')
+    summary.className = 'work-card-summary'
+    summary.textContent = summaryText
+    body.append(summary)
+  }
+  body.append(action)
   button.append(media, body)
   article.append(button)
   return article
@@ -155,12 +171,26 @@ const renderProjects = () => {
   if (!grid) return
 
   const visibleProjects = activeFilter === 'all'
-    ? projects
-    : projects.filter((project) => project.group === activeFilter)
+    ? projects.filter((project) => project.kind !== 'service')
+    : projects.filter((project) => (
+      activeFilter === 'projects'
+        ? project.kind === 'project'
+        : project.kind === 'machinery'
+    ))
 
   const fragment = document.createDocumentFragment()
   visibleProjects.forEach((project, index) => fragment.append(createProjectCard(project, index)))
   grid.replaceChildren(fragment)
+}
+
+const renderServices = () => {
+  if (!serviceGrid) return
+
+  const fragment = document.createDocumentFragment()
+  projects
+    .filter((project) => project.kind === 'service')
+    .forEach((project, index) => fragment.append(createProjectCard(project, index)))
+  serviceGrid.replaceChildren(fragment)
 }
 
 const renderProjectCopy = (project) => {
@@ -186,6 +216,7 @@ const renderProjectCopy = (project) => {
     fragment.append(section)
   })
 
+  modalCopy.hidden = !fragment.childNodes.length
   modalCopy.replaceChildren(fragment)
 }
 
@@ -391,3 +422,4 @@ document.addEventListener('keydown', (event) => {
 
 renderCounts()
 renderProjects()
+renderServices()
