@@ -1,0 +1,8 @@
+# Copy to functions/.dev.vars only for local Cloudflare Pages Functions testing.
+# Do not commit the copied file or any production credential.
+CF_EMAIL_API_TOKEN=
+CF_ACCOUNT_ID=
+CONTACT_EMAIL=simonyanshinllc@gmail.com
+EMAIL_FROM=
+TURNSTILE_SECRET_KEY=
+LEAD_REQUIRE_TURNSTILE=false

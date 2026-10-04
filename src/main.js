@@ -21,6 +21,7 @@ const pageRoutes = {
   projects: '/projects/',
   about: '/about/',
   equipment: '/equipment/',
+  contact: '/contact/',
 }
 
 const buildLocalePath = (targetLocale, targetPage = page) => {
@@ -32,6 +33,10 @@ const buildLocalePath = (targetLocale, targetPage = page) => {
 const buildHomeAnchorPath = (anchor = '') => {
   const home = buildLocalePath(locale, 'home')
   return anchor ? `${home}#${anchor}` : home
+}
+
+if (page === 'home' && window.location.hash === '#contact') {
+  window.location.replace(buildLocalePath(locale, 'contact'))
 }
 
 const setMenuToggleLabel = (isOpen) => {
@@ -98,6 +103,11 @@ const applyTranslations = () => {
     if (value != null) element.setAttribute('content', value)
   })
 
+  document.querySelectorAll('[data-i18n-placeholder]').forEach((element) => {
+    const value = text[element.dataset.i18nPlaceholder]
+    if (value != null) element.setAttribute('placeholder', value)
+  })
+
   const currentLanguage = document.querySelector('[data-current-language]')
   if (currentLanguage) currentLanguage.textContent = locales[locale].code
 
@@ -130,6 +140,10 @@ const applyTranslations = () => {
 
   document.querySelectorAll('[data-equipment-link]').forEach((link) => {
     link.href = buildLocalePath(locale, 'equipment')
+  })
+
+  document.querySelectorAll('[data-contact-link], [data-contact-page-link]').forEach((link) => {
+    link.href = buildLocalePath(locale, 'contact')
   })
 
   setMenuToggleLabel(false)

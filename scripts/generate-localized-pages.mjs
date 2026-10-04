@@ -28,6 +28,12 @@ const pages = [
     titleKey: 'equipmentPageTitle',
     metaKey: 'equipmentMetaDescription',
   },
+  {
+    template: 'contact/index.html',
+    output: (locale) => `${locale}/contact/index.html`,
+    titleKey: 'contactPageTitle',
+    metaKey: 'contactMetaDescription',
+  },
 ]
 
 for (const page of pages) {
