@@ -1,7 +1,7 @@
 {
   "id": "projects-hotel-construction-and-renovation",
   "group": "projects",
-  "kind": "service",
+  "kind": "project",
   "order": 3,
   "titles": {
     "hy": "Հյուրանոցների կառուցում և վերանորոգում",

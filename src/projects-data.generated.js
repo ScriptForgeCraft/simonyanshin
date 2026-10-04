@@ -99,7 +99,7 @@ export const projects = [
   {
     "id": "projects-hotel-construction-and-renovation",
     "group": "projects",
-    "kind": "service",
+    "kind": "project",
     "order": 3,
     "sourcePath": "projects/hotel-construction-and-renovation",
     "images": [
@@ -978,7 +978,7 @@ export const projects = [
   {
     "id": "projects-construction-of-private-houses-in-the-republic-of-armenia",
     "group": "projects",
-    "kind": "service",
+    "kind": "project",
     "order": 702,
     "sourcePath": "projects/construction-of-private-houses-in-the-republic-of-armenia",
     "images": [
