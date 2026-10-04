@@ -95,6 +95,7 @@ const createProjectCard = (project, index) => {
   const button = document.createElement('button')
   button.type = 'button'
   button.className = 'work-card-button'
+  button.dataset.projectId = project.id
   button.setAttribute('aria-label', `${actionLabel(project)}: ${content.title}`)
   button.addEventListener('click', () => openProject(project, button))
 
@@ -299,6 +300,17 @@ const closeProject = () => {
   }, 260)
 }
 
+const openProjectFromHash = () => {
+  const projectId = new URLSearchParams(window.location.hash.slice(1)).get('project')
+  if (!projectId) return
+
+  const project = projects.find((item) => item.id === projectId)
+  if (!project) return
+
+  const opener = document.querySelector(`[data-project-id="${project.id}"]`)
+  openProject(project, opener)
+}
+
 const renderLightboxThumbs = () => {
   if (!activeProject || !lightboxThumbs) return
 
@@ -423,3 +435,4 @@ document.addEventListener('keydown', (event) => {
 renderCounts()
 renderProjects()
 renderServices()
+openProjectFromHash()

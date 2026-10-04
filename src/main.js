@@ -119,6 +119,11 @@ const applyTranslations = () => {
     link.href = buildLocalePath(locale, 'projects')
   })
 
+  document.querySelectorAll('[data-featured-project-link]').forEach((link) => {
+    const projectId = link.dataset.featuredProjectLink
+    if (projectId) link.href = `${buildLocalePath(locale, 'projects')}#project=${encodeURIComponent(projectId)}`
+  })
+
   document.querySelectorAll('[data-about-link]').forEach((link) => {
     link.href = buildLocalePath(locale, 'about')
   })
