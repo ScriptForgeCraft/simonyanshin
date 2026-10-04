@@ -22,11 +22,10 @@ svg { display: block; }
 
 .site-header { position: absolute; z-index: 5; inset: 0 0 auto; color: #fff; }
 .header-inner { height: 79px; display: flex; align-items: center; gap: 20px; }
-.brand { display: inline-flex; align-items: center; min-width: 247px; gap: 10px; }
-.brand-mark { width: 32px; height: 35px; fill: none; stroke: var(--gold-light); stroke-width: 2.5; }
+.brand { display: inline-flex; align-items: center; min-width: 247px; }
 .brand-copy { display: grid; line-height: 1; letter-spacing: .65px; }
-.brand-copy strong { font-size: 15px; font-weight: 700; }
-.brand-copy small { margin-top: 4px; font-size: 7px; letter-spacing: 1px; }
+.brand-copy strong { font-size: 16px; font-weight: 700; letter-spacing: 1.35px; }
+.brand-copy small { margin-top: 5px; color: rgba(255,255,255,.72); font-size: 7px; letter-spacing: 1.1px; }
 .primary-nav { display: flex; align-items: center; justify-content: center; flex: 1; gap: clamp(14px, 2.25vw, 32px); }
 .primary-nav a { position: relative; padding: 8px 0; font-size: 10px; white-space: nowrap; }
 .primary-nav a::after { content: ""; position: absolute; right: 0; bottom: 0; left: 0; height: 1px; background: var(--gold-light); transform: scaleX(0); transform-origin: left; transition: transform .2s ease; }
@@ -121,8 +120,8 @@ svg { display: block; }
   .site-header { position: absolute; }
   .header-inner { height: 68px; justify-content: space-between; }
   .brand { min-width: 0; gap: 8px; }
-  .brand-mark { width: 28px; height: 31px; }
-  .brand-copy strong { font-size: 12px; }
+  .brand { min-width: 0; }
+  .brand-copy strong { font-size: 12px; letter-spacing: 1px; }
   .brand-copy small { font-size: 5.5px; }
   .menu-toggle { display: block; margin-left: auto; }
   .language-select { width: 43px; height: 26px; }
