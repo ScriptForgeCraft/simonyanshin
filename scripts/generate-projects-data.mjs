@@ -14,7 +14,7 @@ const root = process.cwd()
 const portfolioRoot = resolve(root, 'public/portfolio')
 const outputFile = resolve(root, 'src/projects-data.generated.js')
 const pageOutputDirectory = resolve(root, 'src/projects-data-pages')
-const projectsPerPage = 20
+const projectsPerPage = 18
 
 const groupDefinitions = [
   { directory: 'projects', group: 'projects' },
