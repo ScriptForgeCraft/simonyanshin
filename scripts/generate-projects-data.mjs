@@ -175,17 +175,11 @@ const dataPageByProjectId = new Map(
   projectDataPages.flatMap((page, pageIndex) => page.map((project) => [project.id, pageIndex + 1])),
 )
 
-const createPageDefinitions = (filter) => {
-  const filteredProjects = portfolioProjects.filter((project) => (
-    filter === 'all'
-      || (filter === 'projects' && ['project', 'service'].includes(project.kind))
-      || (filter === 'machinery' && project.kind === 'machinery')
-  ))
-
+const createPageDefinitions = () => {
   return Array.from(
-    { length: Math.ceil(filteredProjects.length / projectsPerPage) },
+    { length: Math.ceil(portfolioProjects.length / projectsPerPage) },
     (_, index) => {
-      const page = filteredProjects.slice(index * projectsPerPage, (index + 1) * projectsPerPage)
+      const page = portfolioProjects.slice(index * projectsPerPage, (index + 1) * projectsPerPage)
       return {
         ids: page.map((project) => project.id),
         sourcePages: [...new Set(page.map((project) => dataPageByProjectId.get(project.id)))],
@@ -194,17 +188,7 @@ const createPageDefinitions = (filter) => {
   )
 }
 
-const projectPages = {
-  all: createPageDefinitions('all'),
-  projects: createPageDefinitions('projects'),
-  machinery: createPageDefinitions('machinery'),
-}
-
-const projectCounts = {
-  all: portfolioProjects.length,
-  projects: portfolioProjects.filter((project) => ['project', 'service'].includes(project.kind)).length,
-  machinery: portfolioProjects.filter((project) => project.kind === 'machinery').length,
-}
+const projectPages = { all: createPageDefinitions() }
 
 await mkdir(pageOutputDirectory, { recursive: true })
 await Promise.all(projectDataPages.map((page, index) => writeFile(
@@ -219,7 +203,6 @@ const pageLoaders = projectDataPages
 
 const manifest = `${banner}
 export const projectsPerPage = ${projectsPerPage}
-export const projectCounts = ${JSON.stringify(projectCounts, null, 2)}
 export const projectPages = ${JSON.stringify(projectPages, null, 2)}
 export const serviceProjects = ${JSON.stringify(serviceProjects, null, 2)}
 
