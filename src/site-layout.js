@@ -32,10 +32,14 @@ const sprite = `
 const navItems = [
   ['home', 'navHome'],
   ['about', 'navAbout'],
-  ['services', 'navServices'],
   ['projects', 'navProjects'],
   ['equipment', 'navEquipment'],
   ['contact', 'navContact'],
+]
+const footerNavItems = [
+  ...navItems.slice(0, 2),
+  ['services', 'navServices'],
+  ...navItems.slice(2),
 ]
 
 const navLink = (id, key) => {
@@ -77,7 +81,7 @@ const footer = `
         </div>
         <nav class="site-footer-nav" aria-label="ԲԱԺԻՆՆԵՐ" data-i18n-aria-label="footerNavigation">
           <h2 class="site-footer-heading" data-i18n="footerNavigation">ԲԱԺԻՆՆԵՐ</h2>
-          <div class="site-footer-nav-links">${navItems.map(([id, key]) => navLink(id, key)).join('')}</div>
+          <div class="site-footer-nav-links">${footerNavItems.map(([id, key]) => navLink(id, key)).join('')}</div>
         </nav>
         <section class="site-footer-contact" aria-labelledby="site-footer-contact-title">
           <h2 id="site-footer-contact-title" class="site-footer-heading" data-i18n="footerContact">ԿԱՊ</h2>
