@@ -75,8 +75,8 @@ const footer = `
           </a>
           <p data-i18n="footerDescription">Շինարարություն, վերանորոգում և պատմամշակութային ժառանգության վերականգնում Հայաստանում։</p>
         </div>
-        <nav class="site-footer-nav" aria-label="ՆԱՎԻԳԱՑԻԱ" data-i18n-aria-label="footerNavigation">
-          <h2 class="site-footer-heading" data-i18n="footerNavigation">ՆԱՎԻԳԱՑԻԱ</h2>
+        <nav class="site-footer-nav" aria-label="ԲԱԺԻՆՆԵՐ" data-i18n-aria-label="footerNavigation">
+          <h2 class="site-footer-heading" data-i18n="footerNavigation">ԲԱԺԻՆՆԵՐ</h2>
           <div class="site-footer-nav-links">${navItems.map(([id, key]) => navLink(id, key)).join('')}</div>
         </nav>
         <section class="site-footer-contact" aria-labelledby="site-footer-contact-title">
