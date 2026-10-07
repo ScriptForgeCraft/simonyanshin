@@ -3,6 +3,7 @@ node_modules/
 
 # Vite production output
 dist/
+/.tmp-build/
 
 # Generated localized entry pages
 /ru/
