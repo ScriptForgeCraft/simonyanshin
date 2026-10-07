@@ -1,8 +1,14 @@
 import './projects.css'
 import { locale, text } from './main.js'
-import { projects } from './projects-data.generated.js'
+import {
+  loadProjectDataPage,
+  projectCounts,
+  projectPages,
+  serviceProjects,
+} from './projects-data.generated.js'
 
 const grid = document.querySelector('[data-project-grid]')
+const pagination = document.querySelector('[data-project-pagination]')
 const serviceGrid = document.querySelector('[data-service-grid]')
 const filterButtons = [...document.querySelectorAll('[data-work-filter]')]
 const modal = document.querySelector('[data-project-modal]')
@@ -25,12 +31,23 @@ const previousButton = document.querySelector('[data-lightbox-prev]')
 const nextButton = document.querySelector('[data-lightbox-next]')
 
 const portfolioRoot = 'portfolio'
-let activeFilter = 'all'
+const dataPageCache = new Map()
+const prefetchCache = new Set()
+const slowConnection = navigator.connection?.saveData
+  || /(^|-)2g$/.test(navigator.connection?.effectiveType ?? '')
+const urlState = new URL(window.location.href)
+const initialFilter = ['all', 'projects', 'machinery'].includes(urlState.searchParams.get('filter'))
+  ? urlState.searchParams.get('filter')
+  : 'all'
+const initialPage = Number.parseInt(urlState.searchParams.get('page') ?? '1', 10)
+let activeFilter = initialFilter
+let activePage = Number.isSafeInteger(initialPage) && initialPage > 0 ? initialPage : 1
 let activeProject = null
 let activeImageIndex = 0
 let projectOpener = null
 let lightboxOpener = null
 let swipeStartX = null
+let projectRenderVersion = 0
 
 const localizedContent = (project) => project.content[locale] ?? project.content.hy
 
@@ -77,16 +94,154 @@ const createIcon = (id) => {
 }
 
 const renderCounts = () => {
-  const counts = {
-    all: projects.filter((project) => project.kind !== 'service').length,
-    projects: projects.filter((project) => project.kind === 'project').length,
-    machinery: projects.filter((project) => project.kind === 'machinery').length,
-  }
-
-  Object.entries(counts).forEach(([key, value]) => {
+  Object.entries(projectCounts).forEach(([key, value]) => {
     const target = document.querySelector(`[data-filter-count="${key}"]`)
     if (target) target.textContent = String(value)
   })
+}
+
+const getPageCount = (filter = activeFilter) => projectPages[filter]?.length ?? 0
+
+const getPageDefinition = (filter, page) => projectPages[filter]?.[page - 1] ?? null
+
+const loadDataPage = (page) => {
+  if (!dataPageCache.has(page)) {
+    dataPageCache.set(page, loadProjectDataPage(page).then((module) => module.projects))
+  }
+  return dataPageCache.get(page)
+}
+
+const loadProjectsForPage = async (filter, page) => {
+  const definition = getPageDefinition(filter, page)
+  if (!definition) return []
+
+  const sourcePages = await Promise.all(definition.sourcePages.map(loadDataPage))
+  const projectsById = new Map(sourcePages.flat().map((project) => [project.id, project]))
+  return definition.ids.map((id) => projectsById.get(id)).filter(Boolean)
+}
+
+const formatPageText = (template, values) => Object.entries(values).reduce(
+  (result, [key, value]) => result.replace(`{${key}}`, String(value)),
+  template,
+)
+
+const syncPageUrl = () => {
+  const url = new URL(window.location.href)
+  if (activeFilter === 'all') url.searchParams.delete('filter')
+  else url.searchParams.set('filter', activeFilter)
+
+  if (activePage === 1) url.searchParams.delete('page')
+  else url.searchParams.set('page', String(activePage))
+
+  window.history.replaceState(null, '', url)
+}
+
+const prefetchProjectsForPage = async (filter, page) => {
+  const key = `${filter}:${page}`
+  if (prefetchCache.has(key) || slowConnection || !getPageDefinition(filter, page)) return
+
+  prefetchCache.add(key)
+  const nextProjects = await loadProjectsForPage(filter, page)
+
+  nextProjects.forEach((project) => {
+    if (!project.images.length) return
+
+    const href = assetUrl(project, thumbnailName(project.images[0]))
+    const selector = `link[data-project-prefetch="${CSS.escape(href)}"]`
+    if (document.head.querySelector(selector)) return
+
+    const link = document.createElement('link')
+    link.rel = 'prefetch'
+    link.as = 'image'
+    link.href = href
+    link.dataset.projectPrefetch = href
+    document.head.append(link)
+  })
+}
+
+const queueNextPagePrefetch = (renderVersion) => {
+  const nextPage = activePage + 1
+  const filter = activeFilter
+  if (slowConnection || !getPageDefinition(filter, nextPage)) return
+
+  const prefetch = () => {
+    if (renderVersion !== projectRenderVersion || filter !== activeFilter || nextPage !== activePage + 1) return
+    void prefetchProjectsForPage(filter, nextPage)
+  }
+
+  const runWhenIdle = () => {
+    if ('requestIdleCallback' in window) window.requestIdleCallback(prefetch, { timeout: 4000 })
+    else window.setTimeout(prefetch, 1200)
+  }
+
+  if (document.readyState === 'complete') runWhenIdle()
+  else window.addEventListener('load', runWhenIdle, { once: true })
+}
+
+const makePaginationButton = ({ label, page, isCurrent = false, disabled = false }) => {
+  const button = document.createElement('button')
+  button.type = 'button'
+  button.className = 'works-pagination-button'
+  button.textContent = label
+  button.disabled = disabled
+
+  if (isCurrent) {
+    button.classList.add('is-current')
+    button.setAttribute('aria-current', 'page')
+  }
+
+  if (page != null) {
+    button.setAttribute('aria-label', formatPageText(text.worksPaginationPage, { page }))
+    button.addEventListener('mouseenter', () => void prefetchProjectsForPage(activeFilter, page), { once: true })
+    button.addEventListener('focus', () => void prefetchProjectsForPage(activeFilter, page), { once: true })
+    button.addEventListener('click', () => {
+      if (page === activePage) return
+      activePage = page
+      syncPageUrl()
+      void renderProjects({ scrollToGrid: true })
+    })
+  }
+
+  return button
+}
+
+const renderPagination = () => {
+  if (!pagination) return
+
+  const totalPages = getPageCount()
+  pagination.hidden = totalPages < 2
+  pagination.setAttribute('aria-label', text.worksPaginationLabel)
+  if (totalPages < 2) {
+    pagination.replaceChildren()
+    return
+  }
+
+  const fragment = document.createDocumentFragment()
+  const previous = makePaginationButton({
+    label: text.worksPaginationPrevious,
+    page: activePage > 1 ? activePage - 1 : null,
+    disabled: activePage === 1,
+  })
+  previous.classList.add('works-pagination-previous')
+  fragment.append(previous)
+
+  for (let page = 1; page <= totalPages; page += 1) {
+    fragment.append(makePaginationButton({
+      label: String(page),
+      page,
+      isCurrent: page === activePage,
+    }))
+  }
+
+  const next = makePaginationButton({
+    label: text.worksPaginationNext,
+    page: activePage < totalPages ? activePage + 1 : null,
+    disabled: activePage === totalPages,
+  })
+  next.classList.add('works-pagination-next')
+  fragment.append(next)
+
+  pagination.replaceChildren(fragment)
 }
 
 const createProjectCard = (project, index) => {
@@ -171,28 +326,34 @@ const createProjectCard = (project, index) => {
   return article
 }
 
-const renderProjects = () => {
+const renderProjects = async ({ scrollToGrid = false } = {}) => {
   if (!grid) return
 
-  const visibleProjects = activeFilter === 'all'
-    ? projects.filter((project) => project.kind !== 'service')
-    : projects.filter((project) => (
-      activeFilter === 'projects'
-        ? project.kind === 'project'
-        : project.kind === 'machinery'
-    ))
+  const totalPages = getPageCount()
+  activePage = Math.min(Math.max(activePage, 1), Math.max(totalPages, 1))
+  const renderVersion = ++projectRenderVersion
+  const visibleProjects = await loadProjectsForPage(activeFilter, activePage)
+  if (renderVersion !== projectRenderVersion) return
 
   const fragment = document.createDocumentFragment()
   visibleProjects.forEach((project, index) => fragment.append(createProjectCard(project, index)))
   grid.replaceChildren(fragment)
+  renderPagination()
+  queueNextPagePrefetch(renderVersion)
+
+  if (scrollToGrid) {
+    grid.scrollIntoView({
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+      block: 'start',
+    })
+  }
 }
 
 const renderServices = () => {
   if (!serviceGrid) return
 
   const fragment = document.createDocumentFragment()
-  projects
-    .filter((project) => project.kind === 'service')
+  serviceProjects
     .forEach((project, index) => fragment.append(createProjectCard(project, index)))
   serviceGrid.replaceChildren(fragment)
 }
@@ -303,15 +464,30 @@ const closeProject = () => {
   }, 260)
 }
 
-const openProjectFromHash = () => {
+const openProjectFromHash = async () => {
   const projectId = new URLSearchParams(window.location.hash.slice(1)).get('project')
-  if (!projectId) return
+  if (!projectId) return false
 
-  const project = projects.find((item) => item.id === projectId)
-  if (!project) return
+  const serviceProject = serviceProjects.find((project) => project.id === projectId)
+  if (serviceProject) {
+    const opener = document.querySelector(`[data-project-id="${serviceProject.id}"]`)
+    openProject(serviceProject, opener)
+    return true
+  }
+
+  const page = projectPages.all.findIndex((definition) => definition.ids.includes(projectId)) + 1
+  if (!page) return false
+
+  activeFilter = 'all'
+  activePage = page
+  await renderProjects()
+
+  const project = (await loadProjectsForPage('all', page)).find((item) => item.id === projectId)
+  if (!project) return false
 
   const opener = document.querySelector(`[data-project-id="${project.id}"]`)
   openProject(project, opener)
+  return true
 }
 
 const renderLightboxThumbs = () => {
@@ -396,12 +572,14 @@ const previousImage = () => showLightboxImage(activeImageIndex - 1)
 filterButtons.forEach((button) => {
   button.addEventListener('click', () => {
     activeFilter = button.dataset.workFilter
+    activePage = 1
     filterButtons.forEach((item) => {
       const isActive = item === button
       item.classList.toggle('is-active', isActive)
       item.setAttribute('aria-pressed', String(isActive))
     })
-    renderProjects()
+    syncPageUrl()
+    void renderProjects({ scrollToGrid: true })
   })
 })
 
@@ -435,7 +613,18 @@ document.addEventListener('keydown', (event) => {
   if (modal && !modal.hidden && event.key === 'Escape') closeProject()
 })
 
-renderCounts()
-renderProjects()
-renderServices()
-openProjectFromHash()
+const initializeProjects = async () => {
+  filterButtons.forEach((button) => {
+    const isActive = button.dataset.workFilter === activeFilter
+    button.classList.toggle('is-active', isActive)
+    button.setAttribute('aria-pressed', String(isActive))
+  })
+
+  renderCounts()
+  renderServices()
+
+  const didOpenProjectFromHash = await openProjectFromHash()
+  if (!didOpenProjectFromHash) await renderProjects()
+}
+
+void initializeProjects()

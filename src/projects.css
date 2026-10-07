@@ -124,6 +124,14 @@ body.is-overlay-open { overflow: hidden; }
 .works-filter.is-active .works-filter-count { background: rgba(255, 255, 255, .1); color: var(--gold-light); }
 
 .works-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 34px 18px; }
+.works-pagination { display: flex; align-items: center; justify-content: center; gap: 7px; margin-top: 42px; }
+.works-pagination[hidden] { display: none; }
+.works-pagination-button { min-width: 38px; min-height: 38px; padding: 0 12px; border: 1px solid #d4d0c7; background: transparent; color: #4a4844; font-family: inherit; font-size: 10px; font-weight: 700; cursor: pointer; transition: background .2s ease, border-color .2s ease, color .2s ease; }
+.works-pagination-button:hover:not(:disabled), .works-pagination-button:focus-visible { border-color: var(--gold); color: var(--ink-deep); }
+.works-pagination-button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.works-pagination-button.is-current { border-color: var(--ink-deep); background: var(--ink-deep); color: #fff; }
+.works-pagination-button:disabled { cursor: default; opacity: .38; }
+.works-pagination-previous, .works-pagination-next { min-width: 78px; }
 .works-services { padding: 0 0 88px; background: #f6f5f1; }
 .works-services-grid { margin-top: 30px; }
 .work-card { min-width: 0; }
@@ -233,6 +241,7 @@ body.is-overlay-open { overflow: hidden; }
   .works-toolbar::-webkit-scrollbar { display: none; }
   .works-filter { flex: 0 0 auto; }
   .works-grid { gap: 30px 12px; }
+  .works-pagination { margin-top: 34px; }
   .project-modal-panel { inset: 12px; }
   .project-modal-scroll { max-height: calc(100vh - 24px); }
   .project-modal-close { top: 11px; right: 11px; }
@@ -250,6 +259,9 @@ body.is-overlay-open { overflow: hidden; }
 
 @media (max-width: 560px) {
   .works-grid { grid-template-columns: 1fr; gap: 36px; }
+  .works-pagination { gap: 5px; }
+  .works-pagination-button { min-width: 35px; min-height: 36px; padding-inline: 10px; }
+  .works-pagination-previous, .works-pagination-next { min-width: 0; }
   .work-card-media { aspect-ratio: 1.38 / 1; }
   .work-card-title { min-height: 0; font-size: 14px; }
   .work-card-summary { min-height: 0; }
