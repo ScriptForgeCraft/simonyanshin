@@ -8,6 +8,7 @@ export const translations = {
   hy: {
     pageTitle: 'SimonyanShin — Շինարարական ընկերություն',
     metaDescription: 'SimonyanShin — շինարարություն, վերանորոգում և վերականգնում Հայաստանում։',
+    brandName: 'ՍԻՄՈՆՅԱՆ ՇԻՆ',
     brandHome: 'SimonyanShin գլխավոր էջ',
     brandTagline: 'ՇԻՆԱՐԱՐԱԿԱՆ ԸՆԿԵՐՈՒԹՅՈՒՆ',
     languageMenu: 'Լեզվի ընտրություն',
@@ -203,6 +204,7 @@ export const translations = {
   ru: {
     pageTitle: 'SimonyanShin — Строительная компания',
     metaDescription: 'SimonyanShin — строительство, ремонт и реставрация в Армении.',
+    brandName: 'СИМОНЯН ШИН',
     brandHome: 'Главная страница SimonyanShin',
     brandTagline: 'СТРОИТЕЛЬНАЯ КОМПАНИЯ',
     languageMenu: 'Выбор языка',
@@ -398,6 +400,7 @@ export const translations = {
   en: {
     pageTitle: 'SimonyanShin — Construction Company',
     metaDescription: 'SimonyanShin — construction, renovation, and restoration in Armenia.',
+    brandName: 'SIMONYAN SHIN',
     brandHome: 'SimonyanShin home page',
     brandTagline: 'CONSTRUCTION COMPANY',
     languageMenu: 'Choose language',

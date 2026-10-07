@@ -4,6 +4,7 @@ export const contactDetails = Object.freeze({
   email: 'simonyanshinllc@gmail.com',
   emailHref: 'mailto:simonyanshinllc@gmail.com',
   socialLinks: Object.freeze({
+    instagram: 'https://www.instagram.com/simonyanshin/',
     linkedin: 'https://www.linkedin.com/in/karen-simonyan-006790334',
     telegram: 'https://t.me/KarSimonyan01',
     whatsapp: 'https://wa.me/37493102205',

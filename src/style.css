@@ -69,7 +69,14 @@ svg {
 .brand {
   display: inline-flex;
   align-items: center;
+  gap: 10px;
   min-width: 247px;
+}
+.brand-mark {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 auto;
+  object-fit: contain;
 }
 .brand-copy {
   display: grid;
@@ -552,8 +559,8 @@ svg {
   outline-offset: 2px;
 }
 .socials svg {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   fill: currentColor;
   stroke: none;
 }
@@ -675,6 +682,11 @@ svg {
   border-color: rgba(210, 165, 97, 0.66);
   color: #fff;
 }
+
+.site-footer .socials svg {
+  width: 20px;
+  height: 20px;
+}
 .site-footer .socials a:hover,
 .site-footer .socials a:focus-visible {
   border-color: var(--gold);
@@ -724,6 +736,10 @@ svg {
   .brand {
     min-width: 0;
     gap: 8px;
+  }
+  .brand-mark {
+    width: 36px;
+    height: 36px;
   }
   .brand {
     min-width: 0;
