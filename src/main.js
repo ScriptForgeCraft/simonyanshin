@@ -1,4 +1,5 @@
 import './style.css'
+import './site-layout.js'
 import { locales, translations } from './i18n.js'
 import { contactDetails } from './site-data.js'
 

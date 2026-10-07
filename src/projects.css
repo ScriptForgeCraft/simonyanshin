@@ -222,8 +222,8 @@ body.is-overlay-open { overflow: hidden; }
   .works-hero { min-height: 600px; background-position: 67% center; }
   .works-hero-content { padding-top: 118px; padding-bottom: 34px; }
   .works-back-link { margin-bottom: 43px; }
-  .works-hero h1 { max-width: 100%; font-size: clamp(34px, 9vw, 40px); }
-  .works-hero-description { max-width: 430px; font-size: 14px; }
+  .works-hero h1 { width: min(100%, 285px); max-width: 100%; font-size: clamp(28px, 7.5vw, 36px); overflow-wrap: anywhere; word-break: break-word; }
+  .works-hero-description { width: min(100%, 330px); max-width: 430px; font-size: 14px; overflow-wrap: anywhere; }
   .works-disciplines { padding-top: 45px; }
   .works-collection { padding: 54px 0 64px; }
   .works-services { padding-bottom: 64px; }

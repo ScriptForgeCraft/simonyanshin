@@ -535,8 +535,11 @@ svg {
   width: 16px;
   height: 16px;
   flex: 0 0 auto;
-  fill: currentColor;
-  stroke: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 .socials {
   display: flex;
@@ -574,6 +577,13 @@ svg {
   height: 16px;
   fill: currentColor;
   stroke: none;
+}
+.socials use[href="#icon-viber"] {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.45;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .site-footer {
@@ -671,8 +681,11 @@ svg {
   flex: 0 0 auto;
   margin-top: 1px;
   color: var(--gold-light);
-  fill: currentColor;
-  stroke: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 .site-footer-socials {
   margin-top: 20px;
@@ -897,6 +910,56 @@ svg {
   .experience-grid {
     grid-template-columns: 1fr 1fr;
     gap: 18px;
+  }
+}
+
+@media (max-width: 980px) {
+  .header-inner {
+    height: 72px;
+  }
+  .brand {
+    min-width: 0;
+  }
+  .menu-toggle {
+    display: block;
+    margin-left: auto;
+  }
+  .menu-toggle:focus-visible,
+  .language-select:focus-visible {
+    outline: 2px solid var(--gold-light);
+    outline-offset: 3px;
+  }
+  .primary-nav {
+    position: absolute;
+    top: 64px;
+    right: max(3.75vw, 20px);
+    left: max(3.75vw, 20px);
+    display: none;
+    padding: 14px 20px;
+    border-top: 1px solid rgba(189, 146, 80, .75);
+    background: rgba(19, 19, 19, .97);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, .35);
+  }
+  .primary-nav.is-open {
+    display: grid;
+    gap: 2px;
+  }
+  .primary-nav a {
+    padding: 11px 0;
+    font-size: 12px;
+  }
+  .primary-nav a::after {
+    display: none;
+  }
+}
+
+@media (min-width: 761px) and (max-width: 980px) {
+  .site-footer-main {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+    gap: 42px;
+  }
+  .site-footer-brand {
+    grid-column: 1 / -1;
   }
 }
 
