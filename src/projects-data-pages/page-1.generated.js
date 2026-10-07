@@ -387,7 +387,7 @@ export const projects = [
     ],
     "content": {
       "hy": {
-        "title": "Տաթևի ձիթհանի վերականգնում — 2010 թ.",
+        "title": "Տաթևի ձիթհանի վերականգնում",
         "blocks": [
           {
             "body": "Տաթևի ձիթհանի վերականգնման նախագիծը վերաբերում է 2010 թվականին։ Կառույցի ավանդական տեսքի և ինքնատիպության պահպանումը, ինչպես նաև պատմական արտադրական մշակույթի արժեքը դրա նկարագրության հիմնական շեշտադրումներն են։"
@@ -395,7 +395,7 @@ export const projects = [
         ]
       },
       "ru": {
-        "title": "Реставрация Татевской маслобойни — 2010 г.",
+        "title": "Реставрация Татевской маслобойни",
         "blocks": [
           {
             "body": "Проект реставрации Татевской маслобойни относится к 2010 году. Его описание акцентирует сохранение традиционного облика и характера сооружения, а также ценность исторической производственной культуры."
@@ -403,7 +403,7 @@ export const projects = [
         ]
       },
       "en": {
-        "title": "Restoration of the Tatev Oil Mill — 2010",
+        "title": "Restoration of the Tatev Oil Mill",
         "blocks": [
           {
             "body": "The Tatev Oil Mill restoration project dates to 2010. Its description emphasizes preserving the structure’s traditional appearance and distinctive character, as well as the value of historic production culture."
