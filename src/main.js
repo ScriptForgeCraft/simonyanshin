@@ -14,6 +14,7 @@ const menu = document.querySelector('[data-menu]')
 const languageSelector = document.querySelector('[data-language-selector]')
 const languageToggle = document.querySelector('[data-language-toggle]')
 const languageMenu = document.querySelector('[data-language-menu]')
+const scrollTopButton = document.querySelector('[data-scroll-top]')
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '')
 
@@ -191,6 +192,19 @@ if (languageSelector) {
   document.addEventListener('click', (event) => {
     if (!languageSelector.contains(event.target)) closeLanguageMenu()
   })
+}
+
+if (scrollTopButton) {
+  const updateScrollTopButton = () => {
+    scrollTopButton.classList.toggle('is-visible', window.scrollY > 360)
+  }
+
+  scrollTopButton.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  })
+
+  window.addEventListener('scroll', updateScrollTopButton, { passive: true })
+  updateScrollTopButton()
 }
 
 window.addEventListener('resize', () => {

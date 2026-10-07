@@ -109,3 +109,9 @@ if (existingHeader) existingHeader.outerHTML = header
 
 const existingFooter = document.querySelector('.site-footer')
 if (existingFooter) existingFooter.outerHTML = footer
+
+document.body.insertAdjacentHTML('beforeend', `
+  <button class="scroll-top" type="button" data-scroll-top aria-label="Վերադառնալ վերև" data-i18n-aria-label="scrollToTop">
+    <svg aria-hidden="true"><use href="#icon-arrow" /></svg>
+  </button>
+`)
