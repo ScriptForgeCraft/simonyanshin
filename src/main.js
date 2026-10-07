@@ -133,7 +133,11 @@ const applyTranslations = () => {
 
   document.querySelectorAll('[data-featured-project-link]').forEach((link) => {
     const projectId = link.dataset.featuredProjectLink
-    if (projectId) link.href = `${buildLocalePath(locale, 'projects')}#project=${encodeURIComponent(projectId)}`
+    if (projectId) {
+      link.href = page === 'home'
+        ? buildHomeAnchorPath(`project=${encodeURIComponent(projectId)}`)
+        : `${buildLocalePath(locale, 'projects')}#project=${encodeURIComponent(projectId)}`
+    }
   })
 
   document.querySelectorAll('[data-about-link]').forEach((link) => {

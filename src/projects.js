@@ -29,6 +29,7 @@ const lightboxThumbs = document.querySelector('[data-lightbox-thumbs]')
 const lightboxCloseButton = document.querySelector('.lightbox-close')
 const previousButton = document.querySelector('[data-lightbox-prev]')
 const nextButton = document.querySelector('[data-lightbox-next]')
+const featuredProjectLinks = [...document.querySelectorAll('[data-featured-project-link]')]
 
 const portfolioRoot = 'portfolio'
 const dataPageCache = new Map()
@@ -449,6 +450,12 @@ const closeProject = () => {
   if (!modal || modal.hidden) return
   if (lightbox && !lightbox.hidden) closeLightbox()
 
+  const url = new URL(window.location.href)
+  if (new URLSearchParams(url.hash.slice(1)).has('project')) {
+    url.hash = ''
+    window.history.replaceState(null, '', url)
+  }
+
   modal.classList.remove('is-open')
   const finish = () => {
     modal.hidden = true
@@ -464,13 +471,11 @@ const closeProject = () => {
   }, 260)
 }
 
-const openProjectFromHash = async () => {
-  const projectId = new URLSearchParams(window.location.hash.slice(1)).get('project')
-  if (!projectId) return false
+const getProjectIdFromHash = () => new URLSearchParams(window.location.hash.slice(1)).get('project')
 
+const openProjectById = async (projectId, opener = null) => {
   const serviceProject = serviceProjects.find((project) => project.id === projectId)
   if (serviceProject) {
-    const opener = document.querySelector(`[data-project-id="${serviceProject.id}"]`)
     openProject(serviceProject, opener)
     return true
   }
@@ -480,14 +485,22 @@ const openProjectFromHash = async () => {
 
   activeFilter = 'all'
   activePage = page
-  await renderProjects()
+  if (grid) await renderProjects()
 
   const project = (await loadProjectsForPage('all', page)).find((item) => item.id === projectId)
   if (!project) return false
 
-  const opener = document.querySelector(`[data-project-id="${project.id}"]`)
-  openProject(project, opener)
+  const projectOpener = opener ?? document.querySelector(`[data-project-id="${project.id}"]`)
+  openProject(project, projectOpener)
   return true
+}
+
+const openProjectFromHash = async () => {
+  const projectId = getProjectIdFromHash()
+  if (!projectId) return false
+
+  const opener = featuredProjectLinks.find((link) => link.dataset.featuredProjectLink === projectId)
+  return openProjectById(projectId, opener)
 }
 
 const renderLightboxThumbs = () => {
@@ -583,6 +596,21 @@ filterButtons.forEach((button) => {
   })
 })
 
+featuredProjectLinks.forEach((link) => {
+  link.addEventListener('click', (event) => {
+    if (!modal) return
+
+    const projectId = link.dataset.featuredProjectLink
+    if (!projectId) return
+
+    event.preventDefault()
+    const url = new URL(window.location.href)
+    url.hash = `project=${encodeURIComponent(projectId)}`
+    window.history.pushState({ projectId }, '', url)
+    void openProjectById(projectId, link)
+  })
+})
+
 document.querySelectorAll('[data-project-close]').forEach((button) => button.addEventListener('click', closeProject))
 document.querySelectorAll('[data-lightbox-close]').forEach((button) => button.addEventListener('click', closeLightbox))
 previousButton?.addEventListener('click', previousImage)
@@ -612,6 +640,18 @@ document.addEventListener('keydown', (event) => {
 
   if (modal && !modal.hidden && event.key === 'Escape') closeProject()
 })
+
+const syncProjectFromNavigation = () => {
+  const projectId = getProjectIdFromHash()
+  if (projectId) {
+    void openProjectFromHash()
+  } else if (modal && !modal.hidden) {
+    closeProject()
+  }
+}
+
+window.addEventListener('hashchange', syncProjectFromNavigation)
+window.addEventListener('popstate', syncProjectFromNavigation)
 
 const initializeProjects = async () => {
   filterButtons.forEach((button) => {
