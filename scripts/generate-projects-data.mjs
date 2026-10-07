@@ -95,10 +95,21 @@ for (const groupDefinition of groupDefinitions) {
     )
 
     const sourcePath = relative(portfolioRoot, folderPath).split(sep).join('/')
-    const availableImages = files
+    const allAvailableImages = files
       .filter((file) => supportedImageExtensions.has(extname(file.name).toLowerCase()))
       .map((file) => file.name)
       .sort((a, b) => a.localeCompare(b, 'en', { numeric: true }))
+
+    const availableImages = allAvailableImages.filter((fileName) => {
+      if (extname(fileName).toLowerCase() !== '.avif') return true
+
+      const stem = fileName.slice(0, -'.avif'.length)
+      return !allAvailableImages.some((candidate) => (
+        candidate !== fileName
+        && candidate.startsWith(`${stem}.`)
+        && extname(candidate).toLowerCase() !== '.avif'
+      ))
+    })
 
     const configuredImages = metadata?.images
     const images = configuredImages == null

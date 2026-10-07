@@ -5,8 +5,21 @@ body.is-overlay-open { overflow: hidden; }
   min-height: 520px;
   display: flex;
   align-items: stretch;
+  overflow: hidden;
   color: #fff;
-  background: 62% 48% / cover no-repeat url('./assets/projectbg.png');
+  background: #171717;
+}
+.works-hero-media {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+.works-hero-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 62% 48%;
 }
 
 .works-hero::after {
@@ -20,6 +33,7 @@ body.is-overlay-open { overflow: hidden; }
 .works-hero-shade {
   position: absolute;
   inset: 0;
+  z-index: 1;
   background:
     linear-gradient(90deg, rgba(15, 15, 15, .94) 0%, rgba(20, 20, 20, .82) 37%, rgba(20, 20, 20, .38) 68%, rgba(10, 10, 10, .48) 100%),
     linear-gradient(0deg, rgba(0, 0, 0, .48), transparent 50%);
@@ -27,7 +41,7 @@ body.is-overlay-open { overflow: hidden; }
 
 .works-hero-content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   padding-top: 126px;
   padding-bottom: 48px;
   display: flex;
@@ -41,7 +55,7 @@ body.is-overlay-open { overflow: hidden; }
   gap: 8px;
   margin-bottom: 33px;
   color: rgba(255, 255, 255, .72);
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 1.2px;
   transition: color .2s ease;
@@ -49,7 +63,7 @@ body.is-overlay-open { overflow: hidden; }
 
 .works-back-link:hover { color: var(--gold-light); }
 .works-back-link svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.8; }
-.works-section-eyebrow { margin: 0; color: var(--gold-light); font-size: 10px; font-weight: 700; letter-spacing: 2.7px; }
+.works-section-eyebrow { margin: 0; color: #735020; font-size: 12px; font-weight: 700; letter-spacing: 2.2px; }
 .works-hero h1 { max-width: 740px; margin: 9px 0 0; font-size: clamp(36px, 5vw, 66px); line-height: 1.04; letter-spacing: 1.5px; }
 .works-hero-description { max-width: 600px; margin: 18px 0 25px; color: rgba(255, 255, 255, .9); font-size: 15px; line-height: 1.7; }
 .works-hero-button { min-height: 43px; }
@@ -69,7 +83,7 @@ body.is-overlay-open { overflow: hidden; }
   background: rgba(20, 20, 20, .22);
   backdrop-filter: blur(8px);
   color: rgba(255, 255, 255, .82);
-  font-size: 8px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: .7px;
 }
@@ -99,7 +113,7 @@ body.is-overlay-open { overflow: hidden; }
 .works-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 34px 18px; }
 .works-pagination { display: flex; align-items: center; justify-content: center; gap: 7px; margin-top: 42px; }
 .works-pagination[hidden] { display: none; }
-.works-pagination-button { min-width: 38px; min-height: 38px; padding: 0 12px; border: 1px solid #d4d0c7; background: transparent; color: #4a4844; font-family: inherit; font-size: 10px; font-weight: 700; cursor: pointer; transition: background .2s ease, border-color .2s ease, color .2s ease; }
+.works-pagination-button { min-width: 38px; min-height: 38px; padding: 0 12px; border: 1px solid #d4d0c7; background: transparent; color: #4a4844; font-family: inherit; font-size: 12px; font-weight: 700; cursor: pointer; transition: background .2s ease, border-color .2s ease, color .2s ease; }
 .works-pagination-button:hover:not(:disabled), .works-pagination-button:focus-visible { border-color: var(--gold); color: var(--ink-deep); }
 .works-pagination-button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 .works-pagination-button.is-current { border-color: var(--ink-deep); background: var(--ink-deep); color: #fff; }
@@ -117,12 +131,16 @@ body.is-overlay-open { overflow: hidden; }
   display: block;
   min-height: 0;
   overflow: visible;
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.42;
   -webkit-line-clamp: unset;
   -webkit-box-orient: initial;
 }
 .work-card { min-width: 0; }
+.work-card-skeleton { overflow: hidden; pointer-events: none; }
+.work-card-skeleton .work-card-media { background: linear-gradient(110deg, #e2e0da 8%, #f0eee8 18%, #e2e0da 33%); background-size: 200% 100%; animation: card-placeholder 1.4s ease-in-out infinite; }
+.work-card-skeleton .work-card-body { min-height: 108px; margin-top: 13px; background: linear-gradient(110deg, #e2e0da 8%, #f0eee8 18%, #e2e0da 33%); background-size: 200% 100%; animation: card-placeholder 1.4s ease-in-out infinite; }
+@keyframes card-placeholder { to { background-position: -200% 0; } }
 .work-card-button { width: 100%; padding: 0; border: 0; background: transparent; color: inherit; text-align: left; cursor: pointer; }
 .work-card-media { position: relative; display: block; overflow: hidden; aspect-ratio: 1.34 / 1; background: #252525; }
 .work-card-media img { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform .5s cubic-bezier(.2,.75,.25,1); }
@@ -130,15 +148,15 @@ body.is-overlay-open { overflow: hidden; }
 .work-card-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.34), transparent 42%, rgba(0,0,0,.45)); }
 .work-card-media-empty { background: radial-gradient(circle at 80% 20%, rgba(189,146,80,.24), transparent 34%), linear-gradient(135deg, #282726, #141414); }
 .work-card-media-top { position: absolute; top: 12px; right: 12px; left: 12px; display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
-.work-card-type, .work-card-photo-count { padding: 6px 8px; background: rgba(18,18,18,.72); backdrop-filter: blur(7px); color: #fff; font-size: 8px; font-weight: 700; letter-spacing: .5px; }
+.work-card-type, .work-card-photo-count { padding: 6px 8px; background: rgba(18,18,18,.72); backdrop-filter: blur(7px); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: .35px; }
 .work-card-photo-count { color: var(--gold-light); }
 .work-card-expand { position: absolute; right: 13px; bottom: 13px; width: 32px; height: 32px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.36); background: rgba(17,17,17,.4); color: #fff; opacity: .78; transition: background .2s ease, opacity .2s ease, transform .2s ease; }
 .work-card-expand svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.6; }
 .work-card-button:hover .work-card-expand, .work-card-button:focus-visible .work-card-expand { opacity: 1; transform: translateY(-2px); background: var(--gold); border-color: var(--gold); }
 .work-card-body { display: block; padding: 13px 2px 0; }
 .work-card-title { display: block; min-height: 34px; color: var(--ink-deep); font-size: 13px; line-height: 1.32; }
-.work-card-summary { display: -webkit-box; min-height: 47px; margin-top: 7px; overflow: hidden; color: #69655f; font-size: 11px; line-height: 1.45; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
-.work-card-action { display: inline-flex; align-items: center; gap: 8px; margin-top: 11px; color: #7d5c2b; font-size: 9px; font-weight: 700; letter-spacing: .45px; }
+.work-card-summary { display: -webkit-box; min-height: 52px; margin-top: 7px; overflow: hidden; color: #69655f; font-size: 12px; line-height: 1.45; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
+.work-card-action { display: inline-flex; align-items: center; gap: 8px; margin-top: 11px; color: #7d5c2b; font-size: 12px; font-weight: 700; letter-spacing: .35px; }
 .work-card-action svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.8; transition: transform .2s ease; }
 .work-card-button:hover .work-card-action svg, .work-card-button:focus-visible .work-card-action svg { transform: translateX(3px); }
 .work-card-button:focus-visible { outline: 2px solid var(--gold); outline-offset: 5px; }
@@ -215,7 +233,8 @@ body.is-overlay-open { overflow: hidden; }
 }
 
 @media (max-width: 760px) {
-  .works-hero { min-height: 600px; background-position: 67% center; }
+  .works-hero { min-height: 600px; }
+  .works-hero-media img { object-position: 67% center; }
   .works-hero-content { padding-top: 118px; padding-bottom: 34px; }
   .works-back-link { margin-bottom: 43px; }
   .works-hero h1 { width: min(100%, 285px); max-width: 100%; font-size: clamp(28px, 7.5vw, 36px); overflow-wrap: anywhere; word-break: break-word; }
@@ -262,6 +281,8 @@ body.is-overlay-open { overflow: hidden; }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .work-card-skeleton .work-card-media,
+  .work-card-skeleton .work-card-body,
   .work-card-media img,
   .work-card-expand,
   .work-card-action svg,
@@ -272,4 +293,6 @@ body.is-overlay-open { overflow: hidden; }
   .project-gallery-overlay svg,
   .lightbox,
   .lightbox-stage img { transition: none !important; }
+  .work-card-skeleton .work-card-media,
+  .work-card-skeleton .work-card-body { animation: none !important; }
 }

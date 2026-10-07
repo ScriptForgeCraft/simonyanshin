@@ -5,6 +5,8 @@
     <link rel="icon" href="/brand/favicon.ico" sizes="any" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#171717" />
+    <link rel="preload" as="image" href="/src/assets/hero-house-mobile.avif" type="image/avif" media="(max-width: 760px)" fetchpriority="high" />
+    <link rel="preload" as="image" href="/src/assets/hero-house.avif" type="image/avif" media="(min-width: 761px)" fetchpriority="high" />
     <meta
       name="description"
       content="SimonyanShin — շինարարություն, վերանորոգում և վերականգնում Հայաստանում։"
@@ -43,7 +45,7 @@
     <header class="site-header" data-header>
       <div class="container header-inner">
         <a class="brand" href="#home" aria-label="SimonyanShin գլխավոր էջ" data-i18n-aria-label="brandHome">
-          <img class="brand-mark" src="/brand/simonyanshin-logo-navbar.png" alt="" width="256" height="256" />
+          <img class="brand-mark" src="/brand/simonyanshin-logo-navbar-small.avif" alt="" width="256" height="256" />
           <span class="brand-copy"><strong>SIMONYAN SHIN</strong><small data-i18n="brandTagline">ՇԻՆԱՐԱՐԱԿԱՆ ԸՆԿԵՐՈՒԹՅՈՒՆ</small></span>
         </a>
 
@@ -73,6 +75,11 @@
 
     <main>
       <section id="home" class="hero" aria-labelledby="hero-title">
+        <picture class="hero-media">
+          <source media="(max-width: 760px)" srcset="/src/assets/hero-house-mobile.avif" type="image/avif" />
+          <source srcset="/src/assets/hero-house.avif" type="image/avif" />
+          <img src="/src/assets/hero-house.png" alt="" fetchpriority="high" decoding="async" />
+        </picture>
         <div class="hero-shade"></div>
         <div class="container hero-content">
           <p class="eyebrow">SIMONYANSHIN CONSTRUCTION COMPANY</p>
@@ -100,10 +107,10 @@
           <div class="title-rule" aria-hidden="true"></div>
           <p class="section-lead" data-i18n="projectsLead">Յուրաքանչյուր նախագիծ մեզ համար միայն կատարված աշխատանք չէ։ Այն մեր պատասխանատվության արդյունքն է։</p>
           <div class="projects-grid">
-            <a class="project-card" href="/projects/#project=projects-construction-of-private-houses-in-the-republic-of-armenia" data-featured-project-link="projects-construction-of-private-houses-in-the-republic-of-armenia"><img src="/portfolio/projects/construction-of-private-houses-in-the-republic-of-armenia/image-001.jpg" alt="Առանձնատան կառուցում Հայաստանում" data-i18n-alt="projectHouseAlt" loading="lazy" decoding="async" /><h3 data-i18n="projectHouseTitle">ԱՌԱՆՁՆԱՏՆԵՐԻ ԿԱՌՈՒՑՈՒՄ</h3><p data-i18n="projectHouseLocation">Հայաստան</p><span data-i18n="projectHouseText">Շինարարություն՝ հիմքից մինչև ամբողջական ավարտ</span></a>
-            <a class="project-card" href="/projects/#project=projects-restoration-of-prince-toros-spring-in-yeghvard-and-improvement-of-the-surrounding-area" data-featured-project-link="projects-restoration-of-prince-toros-spring-in-yeghvard-and-improvement-of-the-surrounding-area"><img src="/portfolio/projects/restoration-of-prince-toros-spring-in-yeghvard-and-improvement-of-the-surrounding-area/image-003.jpg" alt="Թորոս իշխանի աղբյուրը Եղվարդում" data-i18n-alt="projectTorosAlt" loading="lazy" decoding="async" /><h3 data-i18n="projectTorosTitle">ԹՈՐՈՍ ԻՇԽԱՆԻ ԱՂԲՅՈՒՐ</h3><p data-i18n="projectTorosLocation">Եղվարդ</p><span data-i18n="projectTorosText">Վերականգնում և տարածքի բարեկարգում</span></a>
-            <a class="project-card" href="/projects/#project=projects-hotel-construction-and-renovation" data-featured-project-link="projects-hotel-construction-and-renovation"><img src="/portfolio/projects/hotel-construction-and-renovation/image-001.jpg" alt="Հյուրանոցային համալիր Ջերմուկում" data-i18n-alt="projectHotelAlt" loading="lazy" decoding="async" /><h3 data-i18n="projectHotelTitle">ՀՅՈՒՐԱՆՈՑԱՅԻՆ ՀԱՄԱԼԻՐ</h3><p data-i18n="projectHotelLocation">Ջերմուկ</p><span data-i18n="projectHotelText">Շինարարական և վերանորոգման աշխատանքներ</span></a>
-            <a class="project-card" href="/projects/#project=projects-restoration-of-kotavank-and-improvement-of-the-surrounding-area" data-featured-project-link="projects-restoration-of-kotavank-and-improvement-of-the-surrounding-area"><img src="/portfolio/projects/restoration-of-kotavank-and-improvement-of-the-surrounding-area/image-001.jpg" alt="Կոթավանք՝ Ներքին Գետաշեն" data-i18n-alt="projectKotavankAlt" loading="lazy" decoding="async" /><h3 data-i18n="projectKotavankTitle">ԿՈԹԱՎԱՆՔ</h3><p data-i18n="projectKotavankLocation">Ներքին Գետաշեն</p><span data-i18n="projectKotavankText">Վերականգնում և տարածքի բարեկարգում</span></a>
+            <a class="project-card" href="/projects/#project=projects-construction-of-private-houses-in-the-republic-of-armenia" data-featured-project-link="projects-construction-of-private-houses-in-the-republic-of-armenia"><img src="/portfolio/projects/construction-of-private-houses-in-the-republic-of-armenia/image-001.avif" alt="Առանձնատան կառուցում Հայաստանում" data-i18n-alt="projectHouseAlt" loading="lazy" decoding="async" /><h3 data-i18n="projectHouseTitle">ԱՌԱՆՁՆԱՏՆԵՐԻ ԿԱՌՈՒՑՈՒՄ</h3><p data-i18n="projectHouseLocation">Հայաստան</p><span data-i18n="projectHouseText">Շինարարություն՝ հիմքից մինչև ամբողջական ավարտ</span></a>
+            <a class="project-card" href="/projects/#project=projects-restoration-of-prince-toros-spring-in-yeghvard-and-improvement-of-the-surrounding-area" data-featured-project-link="projects-restoration-of-prince-toros-spring-in-yeghvard-and-improvement-of-the-surrounding-area"><img src="/portfolio/projects/restoration-of-prince-toros-spring-in-yeghvard-and-improvement-of-the-surrounding-area/image-003.avif" alt="Թորոս իշխանի աղբյուրը Եղվարդում" data-i18n-alt="projectTorosAlt" loading="lazy" decoding="async" /><h3 data-i18n="projectTorosTitle">ԹՈՐՈՍ ԻՇԽԱՆԻ ԱՂԲՅՈՒՐ</h3><p data-i18n="projectTorosLocation">Եղվարդ</p><span data-i18n="projectTorosText">Վերականգնում և տարածքի բարեկարգում</span></a>
+            <a class="project-card" href="/projects/#project=projects-hotel-construction-and-renovation" data-featured-project-link="projects-hotel-construction-and-renovation"><img src="/portfolio/projects/hotel-construction-and-renovation/image-001.avif" alt="Հյուրանոցային համալիր Ջերմուկում" data-i18n-alt="projectHotelAlt" loading="lazy" decoding="async" /><h3 data-i18n="projectHotelTitle">ՀՅՈՒՐԱՆՈՑԱՅԻՆ ՀԱՄԱԼԻՐ</h3><p data-i18n="projectHotelLocation">Ջերմուկ</p><span data-i18n="projectHotelText">Շինարարական և վերանորոգման աշխատանքներ</span></a>
+            <a class="project-card" href="/projects/#project=projects-restoration-of-kotavank-and-improvement-of-the-surrounding-area" data-featured-project-link="projects-restoration-of-kotavank-and-improvement-of-the-surrounding-area"><img src="/portfolio/projects/restoration-of-kotavank-and-improvement-of-the-surrounding-area/image-001.avif" alt="Կոթավանք՝ Ներքին Գետաշեն" data-i18n-alt="projectKotavankAlt" loading="lazy" decoding="async" /><h3 data-i18n="projectKotavankTitle">ԿՈԹԱՎԱՆՔ</h3><p data-i18n="projectKotavankLocation">Ներքին Գետաշեն</p><span data-i18n="projectKotavankText">Վերականգնում և տարածքի բարեկարգում</span></a>
           </div>
           <a class="button button-outline" href="/projects/" data-projects-link><span data-i18n="viewAllProjects">ԴԻՏԵԼ ԲՈԼՈՐ ՆԱԽԱԳԾԵՐԸ</span><svg aria-hidden="true"><use href="#icon-arrow" /></svg></a>
         </div>
@@ -174,7 +181,7 @@
         <div class="site-footer-main">
           <div class="site-footer-brand">
             <a class="site-footer-brand-link" href="/" data-home-link aria-label="SimonyanShin գլխավոր էջ" data-i18n-aria-label="brandHome">
-              <img class="site-footer-brand-mark" src="/brand/simonyanshin-logo-navbar.png" alt="" width="96" height="96" />
+              <img class="site-footer-brand-mark" src="/brand/simonyanshin-logo-navbar-small.avif" alt="" width="96" height="96" />
               <span class="site-footer-brand-name" data-i18n="footerCompanyName">«Սիմոնյան Շին» ՍՊԸ</span>
             </a>
             <p data-i18n="footerDescription">Շինարարություն, վերանորոգում և պատմամշակութային ժառանգության վերականգնում Հայաստանում։</p>
@@ -256,6 +263,6 @@
     </div>
 
     <script type="module" src="/src/main.js"></script>
-    <script type="module" src="/src/projects.js"></script>
+    <script type="module" src="/src/home-page.js"></script>
   </body>
 </html>

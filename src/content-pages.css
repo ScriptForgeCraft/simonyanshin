@@ -63,13 +63,21 @@
   stroke-width: 1.8;
 }
 
-.inner-eyebrow,
-.content-kicker {
+.inner-eyebrow {
   margin: 0 0 12px;
   color: var(--gold-light);
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 2.2px;
+  text-transform: uppercase;
+}
+
+.content-kicker {
+  margin: 0 0 12px;
+  color: #735020;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
   text-transform: uppercase;
 }
 
@@ -577,11 +585,22 @@
   }
 }
 
-.about-hero {
-  --inner-hero-image: url('./assets/hero-house.png');
+.about-hero .inner-hero-media {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.about-hero .inner-hero-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .about-hero::before {
+  z-index: 1;
   background:
     linear-gradient(
       90deg,
@@ -589,9 +608,10 @@
       rgba(0, 0, 0, 0.58) 34%,
       rgba(0, 0, 0, 0.09) 73%,
       rgba(0, 0, 0, 0.14)
-    ),
-    var(--inner-hero-image, none) center / cover no-repeat;
+    );
 }
+
+.about-hero .inner-hero-content { z-index: 3; }
 
 .contact-hero::before {
   background:
@@ -654,7 +674,7 @@
 
 .contact-socials-wrap > p {
   margin: 0 0 12px;
-  color: #77736d;
+  color: #716d66;
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 1.4px;
@@ -825,8 +845,8 @@
 
 .equipment-type {
   margin: 0 0 14px;
-  color: var(--gold);
-  font-size: 9px;
+  color: #735020;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 1.65px;
   text-transform: uppercase;

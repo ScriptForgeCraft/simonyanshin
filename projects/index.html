@@ -5,6 +5,8 @@
     <link rel="icon" href="/brand/favicon.ico" sizes="any" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#171717" />
+    <link rel="preload" as="image" href="/src/assets/projectbg-mobile.avif" type="image/avif" media="(max-width: 760px)" fetchpriority="high" />
+    <link rel="preload" as="image" href="/src/assets/projectbg.avif" type="image/avif" media="(min-width: 761px)" fetchpriority="high" />
     <meta
       name="description"
       content="SimonyanShin-ի իրականացված շինարարական, վերանորոգման և վերականգնման աշխատանքները Հայաստանում։"
@@ -33,7 +35,7 @@
     <header class="site-header" data-header>
       <div class="container header-inner">
         <a class="brand" href="/" data-home-link aria-label="SimonyanShin գլխավոր էջ" data-i18n-aria-label="brandHome">
-          <img class="brand-mark" src="/brand/simonyanshin-logo-navbar.png" alt="" width="256" height="256" />
+          <img class="brand-mark" src="/brand/simonyanshin-logo-navbar-small.avif" alt="" width="256" height="256" />
           <span class="brand-copy"><strong>SIMONYAN SHIN</strong><small data-i18n="brandTagline">ՇԻՆԱՐԱՐԱԿԱՆ ԸՆԿԵՐՈՒԹՅՈՒՆ</small></span>
         </a>
 
@@ -64,6 +66,11 @@
 
     <main>
       <section class="works-hero" aria-labelledby="works-hero-title">
+        <picture class="works-hero-media">
+          <source media="(max-width: 760px)" srcset="/src/assets/projectbg-mobile.avif" type="image/avif" />
+          <source srcset="/src/assets/projectbg.avif" type="image/avif" />
+          <img src="/src/assets/projectbg.png" alt="" fetchpriority="high" decoding="async" />
+        </picture>
         <div class="works-hero-shade"></div>
         <div class="container works-hero-content">
           <a class="works-back-link" href="/" data-home-link>
@@ -94,7 +101,17 @@
             <p data-i18n="worksCollectionLead">Ընտրեք նախագիծը՝ նկարագրությունը և ամբողջ լուսանկարների շարքը դիտելու համար։</p>
           </header>
 
-          <div class="works-grid" data-project-grid aria-live="polite"></div>
+          <div class="works-grid" data-project-grid aria-live="polite" aria-busy="true">
+            <div class="work-card work-card-skeleton" aria-hidden="true"><span class="work-card-media"></span><span class="work-card-body"></span></div>
+            <div class="work-card work-card-skeleton" aria-hidden="true"><span class="work-card-media"></span><span class="work-card-body"></span></div>
+            <div class="work-card work-card-skeleton" aria-hidden="true"><span class="work-card-media"></span><span class="work-card-body"></span></div>
+            <div class="work-card work-card-skeleton" aria-hidden="true"><span class="work-card-media"></span><span class="work-card-body"></span></div>
+            <div class="work-card work-card-skeleton" aria-hidden="true"><span class="work-card-media"></span><span class="work-card-body"></span></div>
+            <div class="work-card work-card-skeleton" aria-hidden="true"><span class="work-card-media"></span><span class="work-card-body"></span></div>
+            <div class="work-card work-card-skeleton" aria-hidden="true"><span class="work-card-media"></span><span class="work-card-body"></span></div>
+            <div class="work-card work-card-skeleton" aria-hidden="true"><span class="work-card-media"></span><span class="work-card-body"></span></div>
+            <div class="work-card work-card-skeleton" aria-hidden="true"><span class="work-card-media"></span><span class="work-card-body"></span></div>
+          </div>
           <nav class="works-pagination" data-project-pagination aria-label="Project pages" hidden></nav>
           <noscript><p class="works-noscript">JavaScript is required to display the project gallery.</p></noscript>
         </div>
@@ -130,7 +147,7 @@
         <div class="site-footer-main">
           <div class="site-footer-brand">
             <a class="site-footer-brand-link" href="/" data-home-link aria-label="SimonyanShin գլխավոր էջ" data-i18n-aria-label="brandHome">
-              <img class="site-footer-brand-mark" src="/brand/simonyanshin-logo-navbar.png" alt="" width="96" height="96" />
+              <img class="site-footer-brand-mark" src="/brand/simonyanshin-logo-navbar-small.avif" alt="" width="96" height="96" />
               <span class="site-footer-brand-name" data-i18n="footerCompanyName">«Սիմոնյան Շին» ՍՊԸ</span>
             </a>
             <p data-i18n="footerDescription">Շինարարություն, վերանորոգում և պատմամշակութային ժառանգության վերականգնում Հայաստանում։</p>

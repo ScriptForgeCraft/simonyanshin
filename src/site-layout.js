@@ -21,7 +21,7 @@ const sprite = `
     <symbol id="icon-expand" viewBox="0 0 24 24"><path d="M8 3H3v5m13-5h5v5M8 21H3v-5m13 5h5v-5M3 8l6-6m12 6-6-6M3 16l6 6m12-6-6 6"/></symbol>
     <symbol id="icon-phone" viewBox="0 0 24 24"><path d="M7 3h3l2 5-2 2c1 2 3 4 5 5l2-2 5 2v3c0 2-2 3-4 3C10 21 3 14 3 6c0-2 2-3 4-3Z"/></symbol>
     <symbol id="icon-mail" viewBox="0 0 24 24"><path d="M3 5h18v14H3V5Zm0 2 9 6 9-6"/></symbol>
-    <symbol id="icon-pin" viewBox="0 0 24 24"><path d="M20 10c0 5-8 11-8 11s-8-6-8-11a8 8 0 1 1 16 0Zm-8 3a3 3 0 1 0 0-6 3 3 0 0 6Z"/></symbol>
+    <symbol id="icon-pin" viewBox="0 0 24 24"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Zm-8 3a3 3 0 1 0 0-6 3 3 0 1 0 0 6Z"/></symbol>
     <symbol id="icon-instagram" viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></symbol>
     <symbol id="icon-linkedin" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></symbol>
     <symbol id="icon-telegram" viewBox="0 0 24 24"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></symbol>
@@ -51,14 +51,14 @@ const navLink = (id, key) => {
 const header = `
   <header class="site-header" data-header>
     <div class="container header-inner">
-      <a class="brand" href="/" data-home-link aria-label="SimonyanShin գլխավոր էջ" data-i18n-aria-label="brandHome">
+      <a class="brand" href="/" data-home-link>
         <img class="brand-mark" src="/brand/simonyanshin-logo-navbar.png" alt="" width="256" height="256" />
         <span class="brand-copy"><strong data-i18n="brandName">ՍԻՄՈՆՅԱՆ ՇԻՆ</strong><small data-i18n="brandTagline">ՇԻՆԱՐԱՐԱԿԱՆ ԸՆԿԵՐՈՒԹՅՈՒՆ</small></span>
       </a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" data-menu-toggle><svg aria-hidden="true"><use href="#icon-menu" /></svg><span class="visually-hidden" data-i18n="menuOpen">Բացել ընտրացանկը</span></button>
       <nav id="primary-navigation" class="primary-nav" aria-label="Հիմնական ընտրացանկ" data-menu>${navItems.map(([id, key]) => navLink(id, key)).join('')}</nav>
       <div class="language-selector" data-language-selector>
-        <button class="language-select" type="button" aria-expanded="false" aria-controls="language-menu" data-language-toggle data-i18n-aria-label="languageMenu"><span data-current-language>HY</span><span aria-hidden="true">⌄</span></button>
+        <button class="language-select" type="button" aria-expanded="false" aria-controls="language-menu" data-language-toggle><span data-current-language>HY</span><span aria-hidden="true">⌄</span><span class="visually-hidden" data-i18n="languageMenu">Լեզվի ընտրություն</span></button>
         <div id="language-menu" class="language-menu" data-language-menu>
           <a href="/" hreflang="hy" lang="hy" data-locale-link="hy">Հայ</a>
           <a href="/ru/" hreflang="ru" lang="ru" data-locale-link="ru">RU</a>
@@ -73,7 +73,7 @@ const footer = `
     <div class="container">
       <div class="site-footer-main">
           <div class="site-footer-brand">
-            <a class="site-footer-brand-link" href="/" data-home-link aria-label="SimonyanShin գլխավոր էջ" data-i18n-aria-label="brandHome">
+            <a class="site-footer-brand-link" href="/" data-home-link>
               <img class="site-footer-brand-mark" src="/brand/simonyanshin-logo-navbar.png" alt="" width="96" height="96" />
               <span class="site-footer-brand-name" data-i18n="footerCompanyName">«Սիմոնյան Շին» ՍՊԸ</span>
           </a>

@@ -1,5 +1,5 @@
 import './style.css'
-import './site-layout.js'
+import { normalizeContactIcons } from './contact-icons.js'
 import { locales, translations } from './i18n.js'
 import { contactDetails } from './site-data.js'
 
@@ -9,12 +9,25 @@ const locale = translations[localeFromPath]
   : (translations[document.documentElement.lang] ? document.documentElement.lang : 'hy')
 const text = translations[locale]
 const page = document.body.dataset.page || 'home'
+normalizeContactIcons()
 const toggle = document.querySelector('[data-menu-toggle]')
 const menu = document.querySelector('[data-menu]')
 const languageSelector = document.querySelector('[data-language-selector]')
 const languageToggle = document.querySelector('[data-language-toggle]')
 const languageMenu = document.querySelector('[data-language-menu]')
-const scrollTopButton = document.querySelector('[data-scroll-top]')
+const createScrollTopButton = () => {
+  const button = document.createElement('button')
+  button.type = 'button'
+  button.className = 'scroll-top'
+  button.dataset.scrollTop = ''
+  button.setAttribute('aria-label', 'Վերադառնալ վերև')
+  button.setAttribute('data-i18n-aria-label', 'scrollToTop')
+  button.innerHTML = '<svg aria-hidden="true"><use href="#icon-arrow" /></svg>'
+  document.body.append(button)
+  return button
+}
+
+const scrollTopButton = document.querySelector('[data-scroll-top]') ?? createScrollTopButton()
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '')
 
@@ -112,6 +125,14 @@ const applyTranslations = () => {
 
   const currentLanguage = document.querySelector('[data-current-language]')
   if (currentLanguage) currentLanguage.textContent = locales[locale].code
+
+  document.querySelectorAll('.brand, .site-footer-brand-link').forEach((link) => {
+    link.removeAttribute('aria-label')
+  })
+
+  if (languageToggle) {
+    languageToggle.setAttribute('aria-label', `${locales[locale].code} — ${text.languageMenu}`)
+  }
 
   document.querySelectorAll('[data-locale-link]').forEach((link) => {
     const linkLocale = link.dataset.localeLink

@@ -61,6 +61,7 @@ const assetUrl = (project, imageName) => {
 
 const thumbnailName = (image) => (typeof image === 'string' ? image : image.thumbnail)
 const fullImageName = (image) => (typeof image === 'string' ? image : image.full)
+const cardThumbnailName = (image) => thumbnailName(image).replace(/\.[^.]+$/, '.avif')
 
 const firstBody = (project) => localizedContent(project).blocks.find((block) => block.body)?.body ?? ''
 
@@ -134,7 +135,7 @@ const prefetchProjectsForPage = async (page) => {
   nextProjects.forEach((project) => {
     if (!project.images.length) return
 
-    const href = assetUrl(project, thumbnailName(project.images[0]))
+    const href = assetUrl(project, cardThumbnailName(project.images[0]))
     const selector = `link[data-project-prefetch="${CSS.escape(href)}"]`
     if (document.head.querySelector(selector)) return
 
@@ -178,7 +179,7 @@ const makePaginationButton = ({ label, page, isCurrent = false, disabled = false
   }
 
   if (page != null) {
-    button.setAttribute('aria-label', formatPageText(text.worksPaginationPage, { page }))
+    button.setAttribute('aria-label', `${label} — ${formatPageText(text.worksPaginationPage, { page })}`)
     button.addEventListener('mouseenter', () => void prefetchProjectsForPage(page), { once: true })
     button.addEventListener('focus', () => void prefetchProjectsForPage(page), { once: true })
     button.addEventListener('click', () => {
@@ -241,7 +242,6 @@ const createProjectCard = (project, index) => {
   button.type = 'button'
   button.className = 'work-card-button'
   button.dataset.projectId = project.id
-  button.setAttribute('aria-label', `${actionLabel(project)}: ${content.title}`)
   button.addEventListener('click', () => openProject(project, button))
 
   const media = document.createElement('span')
@@ -249,15 +249,21 @@ const createProjectCard = (project, index) => {
 
   if (project.images.length) {
     const image = document.createElement('img')
-    image.src = assetUrl(project, thumbnailName(project.images[0]))
+    image.src = assetUrl(project, cardThumbnailName(project.images[0]))
+    image.dataset.fallbackSrc = assetUrl(project, thumbnailName(project.images[0]))
     image.alt = content.title
-    image.loading = index < 6 ? 'eager' : 'lazy'
+    image.loading = 'lazy'
     image.decoding = 'async'
-    if (index < 3) image.fetchPriority = 'high'
+    image.fetchPriority = 'low'
     image.addEventListener('error', () => {
+      if (image.dataset.fallbackSrc) {
+        image.src = image.dataset.fallbackSrc
+        delete image.dataset.fallbackSrc
+        return
+      }
       image.remove()
       media.classList.add('work-card-media-empty')
-    }, { once: true })
+    })
     media.append(image)
   }
 
@@ -325,6 +331,7 @@ const renderProjects = async ({ scrollToGrid = false } = {}) => {
   const fragment = document.createDocumentFragment()
   visibleProjects.forEach((project, index) => fragment.append(createProjectCard(project, index)))
   grid.replaceChildren(fragment)
+  grid.removeAttribute('aria-busy')
   renderPagination()
   queueNextPagePrefetch(renderVersion)
 
@@ -638,11 +645,19 @@ const syncProjectFromNavigation = () => {
 window.addEventListener('hashchange', syncProjectFromNavigation)
 window.addEventListener('popstate', syncProjectFromNavigation)
 
-const initializeProjects = async () => {
+const renderInitialProjects = async () => {
   await renderServices()
+  await renderProjects()
+}
 
-  const didOpenProjectFromHash = await openProjectFromHash()
-  if (!didOpenProjectFromHash) await renderProjects()
+const initializeProjects = async () => {
+  if (getProjectIdFromHash()) {
+    await renderServices()
+    await openProjectFromHash()
+    return
+  }
+
+  await renderInitialProjects()
 }
 
 void initializeProjects()
