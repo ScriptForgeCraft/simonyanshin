@@ -257,13 +257,6 @@ svg {
 .hero-shade {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0.82) 0%,
-    rgba(0, 0, 0, 0.58) 34%,
-    rgba(0, 0, 0, 0.09) 73%,
-    rgba(0, 0, 0, 0.14)
-  );
 }
 .hero-content {
   position: relative;
