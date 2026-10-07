@@ -641,8 +641,14 @@ svg {
 }
 .site-footer-brand-link {
   display: inline-grid;
-  gap: 6px;
+  justify-items: center;
+  gap: 14px;
   color: #fff;
+}
+.site-footer-brand-mark {
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
 }
 .site-footer-brand-name {
   font-size: 17px;
