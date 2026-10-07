@@ -497,10 +497,12 @@ svg {
 }
 .contact-content {
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 32px;
+  grid-template-columns: minmax(0, 1fr);
   align-items: center;
-  padding: 20px 6.5% 18px 7.5%;
+  padding: 26px 7.5%;
+}
+.contact-copy {
+  max-width: 500px;
 }
 .contact h2 {
   margin: 0;
@@ -508,7 +510,7 @@ svg {
   letter-spacing: 2px;
 }
 .contact-copy p {
-  max-width: 360px;
+  max-width: 470px;
   margin: 10px 0 12px;
   font-size: 11px;
   line-height: 1.55;
@@ -517,29 +519,6 @@ svg {
   min-height: 34px;
   padding-inline: 16px;
   font-size: 9px;
-}
-.contact-details {
-  display: grid;
-  gap: 10px;
-  font-style: normal;
-  font-size: 10px;
-}
-.contact-details a,
-.contact-details p {
-  display: flex;
-  align-items: center;
-  gap: 13px;
-  margin: 0;
-}
-.contact-details svg {
-  width: 16px;
-  height: 16px;
-  flex: 0 0 auto;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.7;
-  stroke-linecap: round;
-  stroke-linejoin: round;
 }
 .socials {
   display: flex;
