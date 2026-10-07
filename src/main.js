@@ -165,6 +165,10 @@ const closeLanguageMenu = () => {
 applyTranslations()
 applyContactDetails()
 
+document.querySelectorAll('[data-current-year]').forEach((element) => {
+  element.textContent = String(new Date().getFullYear())
+})
+
 if (toggle && menu) {
   toggle.addEventListener('click', () => {
     const isOpen = menu.classList.toggle('is-open')
