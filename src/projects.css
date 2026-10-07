@@ -6,7 +6,7 @@ body.is-overlay-open { overflow: hidden; }
   display: flex;
   align-items: stretch;
   color: #fff;
-  background: 62% 48% / cover no-repeat url('./assets/project-hovhannes.jpg');
+  background: 62% 48% / cover no-repeat url('./assets/projectbg.png');
 }
 
 .works-hero::after {
@@ -133,7 +133,22 @@ body.is-overlay-open { overflow: hidden; }
 .works-pagination-button:disabled { cursor: default; opacity: .38; }
 .works-pagination-previous, .works-pagination-next { min-width: 78px; }
 .works-services { padding: 0 0 88px; background: #f6f5f1; }
-.works-services-grid { margin-top: 30px; }
+.works-services-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 28px 14px;
+  margin-top: 30px;
+}
+.works-services-grid .work-card-body { padding-top: 11px; }
+.works-services-grid .work-card-title { font-size: 12px; }
+.works-services-grid .work-card-summary {
+  display: block;
+  min-height: 0;
+  overflow: visible;
+  font-size: 10px;
+  line-height: 1.42;
+  -webkit-line-clamp: unset;
+  -webkit-box-orient: initial;
+}
 .work-card { min-width: 0; }
 .work-card-button { width: 100%; padding: 0; border: 0; background: transparent; color: inherit; text-align: left; cursor: pointer; }
 .work-card-media { position: relative; display: block; overflow: hidden; aspect-ratio: 1.34 / 1; background: #252525; }

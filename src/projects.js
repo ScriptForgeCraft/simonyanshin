@@ -30,6 +30,9 @@ const lightboxCloseButton = document.querySelector('.lightbox-close')
 const previousButton = document.querySelector('[data-lightbox-prev]')
 const nextButton = document.querySelector('[data-lightbox-next]')
 const featuredProjectLinks = [...document.querySelectorAll('[data-featured-project-link]')]
+const additionalServiceProjectIds = [
+  'projects-restoration-of-the-gavit-at-anapastanats-monastery-in-meghri-ongoing-work',
+]
 
 const portfolioRoot = 'portfolio'
 const dataPageCache = new Map()
@@ -350,11 +353,25 @@ const renderProjects = async ({ scrollToGrid = false } = {}) => {
   }
 }
 
-const renderServices = () => {
+const loadAdditionalServiceProjects = async () => {
+  const projects = await Promise.all(additionalServiceProjectIds.map(async (projectId) => {
+    const page = projectPages.all.findIndex((definition) => definition.ids.includes(projectId)) + 1
+    if (!page) return null
+
+    const pageProjects = await loadProjectsForPage('all', page)
+    return pageProjects.find((project) => project.id === projectId) ?? null
+  }))
+
+  return projects.filter(Boolean)
+}
+
+const renderServices = async () => {
   if (!serviceGrid) return
 
+  const additionalProjects = await loadAdditionalServiceProjects()
+  const projects = [...serviceProjects, ...additionalProjects]
   const fragment = document.createDocumentFragment()
-  serviceProjects
+  projects
     .forEach((project, index) => fragment.append(createProjectCard(project, index)))
   serviceGrid.replaceChildren(fragment)
 }
@@ -661,7 +678,7 @@ const initializeProjects = async () => {
   })
 
   renderCounts()
-  renderServices()
+  await renderServices()
 
   const didOpenProjectFromHash = await openProjectFromHash()
   if (!didOpenProjectFromHash) await renderProjects()
