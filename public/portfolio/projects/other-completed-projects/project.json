@@ -6,5 +6,11 @@
     "hy": "Այլ իրականացված նախագծեր",
     "ru": "Другие реализованные проекты",
     "en": "Other Completed Projects"
-  }
+  },
+  "images": [
+    {
+      "thumbnail": "completed-projects-collage-preview.png",
+      "full": "completed-projects-collage-full.jpg"
+    }
+  ]
 }

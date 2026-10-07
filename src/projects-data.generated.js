@@ -884,7 +884,12 @@ export const projects = [
     "kind": "project",
     "order": 22,
     "sourcePath": "projects/other-completed-projects",
-    "images": [],
+    "images": [
+      {
+        "thumbnail": "completed-projects-collage-preview.png",
+        "full": "completed-projects-collage-full.jpg"
+      }
+    ],
     "content": {
       "hy": {
         "title": "Այլ իրականացված նախագծեր",

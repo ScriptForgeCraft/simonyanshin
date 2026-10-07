@@ -44,6 +44,9 @@ const assetUrl = (project, imageName) => {
   return `${base}${portfolioRoot}/${encodePath(project.sourcePath)}/${encodeURIComponent(imageName)}`
 }
 
+const thumbnailName = (image) => (typeof image === 'string' ? image : image.thumbnail)
+const fullImageName = (image) => (typeof image === 'string' ? image : image.full)
+
 const firstBody = (project) => localizedContent(project).blocks.find((block) => block.body)?.body ?? ''
 
 const groupLabel = (project) => {
@@ -104,7 +107,7 @@ const createProjectCard = (project, index) => {
 
   if (project.images.length) {
     const image = document.createElement('img')
-    image.src = assetUrl(project, project.images[0])
+    image.src = assetUrl(project, thumbnailName(project.images[0]))
     image.alt = content.title
     image.loading = index < 6 ? 'eager' : 'lazy'
     image.decoding = 'async'
@@ -234,7 +237,7 @@ const renderProjectGallery = (project) => {
     return
   }
 
-  project.images.forEach((imageName, index) => {
+  project.images.forEach((imageEntry, index) => {
     const button = document.createElement('button')
     button.type = 'button'
     button.className = 'project-gallery-item'
@@ -242,7 +245,7 @@ const renderProjectGallery = (project) => {
     button.addEventListener('click', () => openLightbox(index, button))
 
     const image = document.createElement('img')
-    image.src = assetUrl(project, imageName)
+    image.src = assetUrl(project, thumbnailName(imageEntry))
     image.alt = `${localizedContent(project).title} — ${index + 1}`
     image.loading = index < 4 ? 'eager' : 'lazy'
     image.decoding = 'async'
@@ -327,7 +330,7 @@ const renderLightboxThumbs = () => {
     button.addEventListener('click', () => showLightboxImage(index))
 
     const image = document.createElement('img')
-    image.src = assetUrl(activeProject, activeProject.images[index])
+    image.src = assetUrl(activeProject, thumbnailName(activeProject.images[index]))
     image.alt = ''
     image.loading = 'lazy'
     image.decoding = 'async'
@@ -344,7 +347,7 @@ const showLightboxImage = (index) => {
 
   activeImageIndex = (index + activeProject.images.length) % activeProject.images.length
   const content = localizedContent(activeProject)
-  const imageName = activeProject.images[activeImageIndex]
+  const imageName = fullImageName(activeProject.images[activeImageIndex])
 
   lightboxImage.classList.add('is-changing')
   lightboxImage.src = assetUrl(activeProject, imageName)

@@ -92,12 +92,43 @@ for (const groupDefinition of groupDefinitions) {
       }),
     )
 
-    const images = files
+    const sourcePath = relative(portfolioRoot, folderPath).split(sep).join('/')
+    const availableImages = files
       .filter((file) => supportedImageExtensions.has(extname(file.name).toLowerCase()))
       .map((file) => file.name)
       .sort((a, b) => a.localeCompare(b, 'en', { numeric: true }))
 
-    const sourcePath = relative(portfolioRoot, folderPath).split(sep).join('/')
+    const configuredImages = metadata?.images
+    const images = configuredImages == null
+      ? availableImages
+      : configuredImages.map((image, index) => {
+        if (typeof image === 'string') {
+          if (!availableImages.includes(image)) {
+            throw new Error(`Unknown image "${image}" in ${sourcePath}/project.json.`)
+          }
+          return image
+        }
+
+        if (
+          !image
+          || typeof image !== 'object'
+          || typeof image.thumbnail !== 'string'
+          || typeof image.full !== 'string'
+        ) {
+          throw new Error(
+            `Invalid images[${index}] in ${sourcePath}/project.json. Use a filename or { thumbnail, full }.`,
+          )
+        }
+
+        for (const filename of [image.thumbnail, image.full]) {
+          if (!availableImages.includes(filename)) {
+            throw new Error(`Unknown image "${filename}" in ${sourcePath}/project.json.`)
+          }
+        }
+
+        return { thumbnail: image.thumbnail, full: image.full }
+      })
+
     const order = Number.isFinite(Number(metadata?.order)) ? Number(metadata.order) : 900 + fallbackIndex
     const id = metadata?.id ?? `${groupDefinition.group}-${folder.name}`
     const kind = groupDefinition.group === 'machinery'
