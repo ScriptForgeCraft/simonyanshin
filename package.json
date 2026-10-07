@@ -12,6 +12,7 @@
     "import:portfolio": "node scripts/import-portfolio.mjs"
   },
   "devDependencies": {
-    "vite": "^6.2.1"
+    "vite": "^6.2.1",
+    "vite-plugin-pwa": "^2.0.0"
   }
 }
