@@ -47,7 +47,10 @@ button {
   opacity: 0;
   pointer-events: none;
   transform: translateY(10px);
-  transition: opacity 0.2s ease, transform 0.2s ease, background 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    background 0.2s ease;
 }
 .scroll-top.is-visible {
   opacity: 1;
@@ -195,11 +198,9 @@ svg {
   color: #fff;
   font-size: 12px;
   cursor: pointer;
-  &:hover{
-  border: 1px solid rgb(250, 250, 250);
-
+  &:hover {
+    border: 1px solid rgb(250, 250, 250);
   }
- 
 }
 .language-select span {
   margin-left: 4px;
@@ -267,6 +268,7 @@ svg {
 .hero-content {
   position: relative;
   padding-top: 135px;
+  padding-bottom: 40px;
 }
 .eyebrow {
   display: none;
@@ -988,9 +990,9 @@ svg {
     left: max(3.75vw, 20px);
     display: none;
     padding: 14px 20px;
-    border-top: 1px solid rgba(189, 146, 80, .75);
-    background: rgba(19, 19, 19, .97);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, .35);
+    border-top: 1px solid rgba(189, 146, 80, 0.75);
+    background: rgba(19, 19, 19, 0.97);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
   }
   .primary-nav.is-open {
     display: grid;
@@ -1007,7 +1009,7 @@ svg {
 
 @media (min-width: 761px) and (max-width: 980px) {
   .site-footer-main {
-    grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
     gap: 42px;
   }
   .site-footer-brand {
