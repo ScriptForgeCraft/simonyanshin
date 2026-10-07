@@ -70,8 +70,7 @@ const footer = `
       <div class="site-footer-main">
         <div class="site-footer-brand">
           <a class="site-footer-brand-link" href="/" data-home-link aria-label="SimonyanShin գլխավոր էջ" data-i18n-aria-label="brandHome">
-            <span class="site-footer-brand-name" data-i18n="brandName">ՍԻՄՈՆՅԱՆ ՇԻՆ</span>
-            <span class="site-footer-brand-tagline" data-i18n="brandTagline">ՇԻՆԱՐԱՐԱԿԱՆ ԸՆԿԵՐՈՒԹՅՈՒՆ</span>
+            <span class="site-footer-brand-name" data-i18n="footerCompanyName">«Սիմոնյան Շին» ՍՊԸ</span>
           </a>
           <p data-i18n="footerDescription">Շինարարություն, վերանորոգում և պատմամշակութային ժառանգության վերականգնում Հայաստանում։</p>
         </div>
