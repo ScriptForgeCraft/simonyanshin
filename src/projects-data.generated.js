@@ -2,14 +2,16 @@
 
 export const projectsPerPage = 18
 export const projectCounts = {
-  "all": 22,
-  "projects": 21,
+  "all": 25,
+  "projects": 24,
   "machinery": 1
 }
 export const projectPages = {
   "all": [
     {
       "ids": [
+        "projects-apartment-renovation",
+        "projects-restaurant-construction-and-renovation",
         "projects-hotel-construction-and-renovation",
         "projects-structural-reinforcement-and-rebuilding-of-the-walls-of-the-tandzaparakh-monastic-complex",
         "projects-restoration-of-the-holy-mother-of-god-church-in-artsvanik",
@@ -25,9 +27,7 @@ export const projectPages = {
         "projects-restoration-of-prince-toros-spring-in-yeghvard-and-improvement-of-the-surrounding-area",
         "projects-installation-of-bells-at-the-seminary-on-the-akhtamar-peninsula",
         "projects-creation-and-installation-of-the-cross-and-eagles-khachkar-at-the-kapan-fraternal-memorial",
-        "projects-restoration-and-site-improvement-of-saint-hripsime-church-in-old-goris",
-        "projects-kajaran",
-        "projects-restoration-of-the-holy-mother-of-god-church-in-tsovasar"
+        "projects-restoration-and-site-improvement-of-saint-hripsime-church-in-old-goris"
       ],
       "sourcePages": [
         1
@@ -35,9 +35,12 @@ export const projectPages = {
     },
     {
       "ids": [
+        "projects-kajaran",
+        "projects-restoration-of-the-holy-mother-of-god-church-in-tsovasar",
         "projects-restoration-of-saint-mary-church-in-hamletavan-achakhlu-and-improvement-of-the-surrounding-area",
         "projects-other-completed-projects",
         "projects-construction-of-private-houses-in-the-republic-of-armenia",
+        "projects-roof-and-window-replacement",
         "machinery-historical-machinery-of-the-tatev-oil-mill"
       ],
       "sourcePages": [
@@ -48,6 +51,8 @@ export const projectPages = {
   "projects": [
     {
       "ids": [
+        "projects-apartment-renovation",
+        "projects-restaurant-construction-and-renovation",
         "projects-hotel-construction-and-renovation",
         "projects-structural-reinforcement-and-rebuilding-of-the-walls-of-the-tandzaparakh-monastic-complex",
         "projects-restoration-of-the-holy-mother-of-god-church-in-artsvanik",
@@ -63,9 +68,7 @@ export const projectPages = {
         "projects-restoration-of-prince-toros-spring-in-yeghvard-and-improvement-of-the-surrounding-area",
         "projects-installation-of-bells-at-the-seminary-on-the-akhtamar-peninsula",
         "projects-creation-and-installation-of-the-cross-and-eagles-khachkar-at-the-kapan-fraternal-memorial",
-        "projects-restoration-and-site-improvement-of-saint-hripsime-church-in-old-goris",
-        "projects-kajaran",
-        "projects-restoration-of-the-holy-mother-of-god-church-in-tsovasar"
+        "projects-restoration-and-site-improvement-of-saint-hripsime-church-in-old-goris"
       ],
       "sourcePages": [
         1
@@ -73,9 +76,12 @@ export const projectPages = {
     },
     {
       "ids": [
+        "projects-kajaran",
+        "projects-restoration-of-the-holy-mother-of-god-church-in-tsovasar",
         "projects-restoration-of-saint-mary-church-in-hamletavan-achakhlu-and-improvement-of-the-surrounding-area",
         "projects-other-completed-projects",
-        "projects-construction-of-private-houses-in-the-republic-of-armenia"
+        "projects-construction-of-private-houses-in-the-republic-of-armenia",
+        "projects-roof-and-window-replacement"
       ],
       "sourcePages": [
         2
