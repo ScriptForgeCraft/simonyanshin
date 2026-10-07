@@ -61,6 +61,7 @@ svg {
   color: #fff;
 }
 .header-inner {
+  position: relative;
   height: 79px;
   display: flex;
   align-items: center;
@@ -100,6 +101,20 @@ svg {
   justify-content: center;
   flex: 1;
   gap: clamp(14px, 2.25vw, 32px);
+}
+
+@media (min-width: 981px) {
+  .primary-nav {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: max-content;
+    transform: translate(-50%, -50%);
+  }
+
+  .language-selector {
+    margin-left: auto;
+  }
 }
 .primary-nav a {
   position: relative;

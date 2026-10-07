@@ -84,7 +84,6 @@ const footer = `
           <address class="site-footer-address">
             <a data-contact-phone><svg aria-hidden="true"><use href="#icon-phone" /></svg><span data-contact-phone-text></span></a>
             <a data-contact-email><svg aria-hidden="true"><use href="#icon-mail" /></svg><span data-contact-email-text></span></a>
-            <p><svg aria-hidden="true"><use href="#icon-pin" /></svg><span data-i18n="contactLocation">Երևան, Հայաստան</span></p>
           </address>
           <div class="socials site-footer-socials" aria-label="Սոցիալական հարթակներ" data-i18n-aria-label="contactSocialsLabel">
             <a aria-label="Instagram" data-social-link="instagram"><svg aria-hidden="true"><use href="#icon-instagram" /></svg></a>
