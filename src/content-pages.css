@@ -531,8 +531,13 @@
 }
 
 .partners-section .container { position: relative; }
-.partners-heading { margin-bottom: 36px; }
-.partners-heading .content-display-title { color: #fff; }
+.partners-heading { margin-bottom: 36px; text-align: center; }
+.partners-heading .content-kicker {
+  margin-bottom: 0;
+  color: #fff;
+  font-size: clamp(20px, 2.5vw, 32px);
+  letter-spacing: 1.5px;
+}
 
 .partners-grid {
   display: grid;
