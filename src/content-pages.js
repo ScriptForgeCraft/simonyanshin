@@ -22,6 +22,45 @@ if (revealItems.length && !reduceMotion && 'IntersectionObserver' in window) {
   })
 }
 
+const partnerMarquees = [...document.querySelectorAll('[data-partners-marquee]')]
+
+partnerMarquees.forEach((marquee) => {
+  const track = marquee.querySelector('[data-partners-track]')
+  const sourceSet = marquee.querySelector('[data-partners-set]')
+  if (!track || !sourceSet || track.querySelector('[aria-hidden="true"]')) return
+
+  const duplicateSet = sourceSet.cloneNode(true)
+  duplicateSet.removeAttribute('data-partners-set')
+  duplicateSet.setAttribute('aria-hidden', 'true')
+  track.append(duplicateSet)
+  marquee.classList.add('is-marquee-ready')
+})
+
+if (partnerMarquees.length && !reduceMotion) {
+  const syncPartnerMarqueePlayback = () => {
+    const pageIsVisible = document.visibilityState === 'visible'
+    partnerMarquees.forEach((marquee) => {
+      marquee.classList.toggle('is-marquee-running', pageIsVisible && marquee.classList.contains('is-marquee-visible'))
+    })
+  }
+
+  if ('IntersectionObserver' in window) {
+    const marqueeObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        entry.target.classList.toggle('is-marquee-visible', entry.isIntersecting)
+      })
+      syncPartnerMarqueePlayback()
+    }, { threshold: .12 })
+
+    partnerMarquees.forEach((marquee) => marqueeObserver.observe(marquee))
+  } else {
+    partnerMarquees.forEach((marquee) => marquee.classList.add('is-marquee-visible'))
+    syncPartnerMarqueePlayback()
+  }
+
+  document.addEventListener('visibilitychange', syncPartnerMarqueePlayback)
+}
+
 document.querySelectorAll('[data-partners-scroller]').forEach((scroller) => {
   scroller.addEventListener('keydown', (event) => {
     if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return
