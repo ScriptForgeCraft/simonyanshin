@@ -38,7 +38,6 @@ const navItems = [
 ]
 const footerNavItems = [
   ...navItems.slice(0, 2),
-  ['services', 'navServices'],
   ...navItems.slice(2),
 ]
 
