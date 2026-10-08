@@ -5,8 +5,7 @@
     <link rel="icon" href="/brand/favicon.ico" sizes="any" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#171717" />
-    <link rel="preload" as="image" href="/src/assets/projectbg-mobile.avif" type="image/avif" media="(max-width: 760px)" fetchpriority="high" />
-    <link rel="preload" as="image" href="/src/assets/projectbg.avif" type="image/avif" media="(min-width: 761px)" fetchpriority="high" />
+    <link rel="preload" as="image" href="/projects/simonyanshin-projects-hero.avif" type="image/avif" fetchpriority="high" />
     <meta
       name="description"
       content="SimonyanShin-ի իրականացված շինարարական, վերանորոգման և վերականգնման աշխատանքները Հայաստանում։"
@@ -67,9 +66,8 @@
     <main>
       <section class="works-hero" aria-labelledby="works-hero-title">
         <picture class="works-hero-media">
-          <source media="(max-width: 760px)" srcset="/src/assets/projectbg-mobile.avif" type="image/avif" />
-          <source srcset="/src/assets/projectbg.avif" type="image/avif" />
-          <img src="/src/assets/projectbg.png" alt="" fetchpriority="high" decoding="async" />
+          <source srcset="/projects/simonyanshin-projects-hero.avif" type="image/avif" />
+          <img src="/projects/simonyanshin-projects-hero.jpg" width="1672" height="941" alt="" fetchpriority="high" decoding="async" />
         </picture>
         <div class="works-hero-shade"></div>
         <div class="container works-hero-content">
@@ -131,7 +129,12 @@
       </section>
 
       <section id="contact" class="contact works-contact" aria-labelledby="contact-title">
-        <div class="contact-image" role="img" aria-label="Կառուցվող շինություն" data-i18n-aria-label="contactImage"></div>
+        <div class="contact-image">
+          <picture>
+            <source srcset="/contact/simonyanshin-contact-hero.avif" type="image/avif" />
+            <img src="/contact/simonyanshin-contact-hero.jpg" width="1672" height="941" alt="Կառուցվող շինություն" data-i18n-alt="contactImage" loading="lazy" decoding="async" />
+          </picture>
+        </div>
         <div class="contact-content">
           <div class="contact-copy">
             <h2 id="contact-title" data-i18n="contactTitle">ՍԿՍԵՆՔ ՁԵՐ ՆԱԽԱԳԻԾԸ</h2>

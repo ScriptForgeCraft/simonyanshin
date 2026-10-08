@@ -63,15 +63,6 @@
   stroke-width: 1.8;
 }
 
-.inner-eyebrow {
-  margin: 0 0 12px;
-  color: var(--gold-light);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 2.2px;
-  text-transform: uppercase;
-}
-
 .content-kicker {
   margin: 0 0 12px;
   color: #735020;
@@ -620,10 +611,26 @@
 .about-hero .inner-hero-content { z-index: 3; }
 
 .contact-hero::before {
+  z-index: 1;
   background:
-    linear-gradient(100deg, rgba(12, 12, 12, .98) 0%, rgba(18, 18, 18, .9) 52%, rgba(18, 18, 18, .54) 100%),
-    url('./assets/cta-construction.jpg') center / cover no-repeat;
+    linear-gradient(100deg, rgba(12, 12, 12, .97) 0%, rgba(18, 18, 18, .82) 48%, rgba(18, 18, 18, .34) 100%);
 }
+
+.contact-hero .contact-hero-media {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.contact-hero .contact-hero-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 64% center;
+}
+
+.contact-hero .inner-hero-content { z-index: 2; }
 
 .contact-page-section { padding-block: 92px; }
 
