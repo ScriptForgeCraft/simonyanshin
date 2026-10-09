@@ -16,13 +16,13 @@ export const projectPages = {
         "projects-reconstruction-of-the-spiritual-education-center-and-remedial-works-in-the-museum",
         "projects-relocation-of-the-memorial-in-yeghvard-dedicated-to-those-who-fell-in-the-patriotic-and-karabakh-wars",
         "projects-restoration-of-the-holy-mother-of-god-church-in-yeghvard",
-        "projects-restoration-of-the-tatev-oil-mill-2010",
         "projects-restoration-of-kotavank-and-improvement-of-the-surrounding-area",
         "projects-restoration-of-the-gavit-at-anapastanats-monastery-in-meghri-ongoing-work",
         "projects-restoration-of-prince-toros-spring-in-yeghvard-and-improvement-of-the-surrounding-area",
         "projects-installation-of-bells-at-the-seminary-on-the-akhtamar-peninsula",
         "projects-creation-and-installation-of-the-cross-and-eagles-khachkar-at-the-kapan-fraternal-memorial",
-        "projects-restoration-and-site-improvement-of-saint-hripsime-church-in-old-goris"
+        "projects-restoration-and-site-improvement-of-saint-hripsime-church-in-old-goris",
+        "projects-kajaran"
       ],
       "sourcePages": [
         1
@@ -30,7 +30,6 @@ export const projectPages = {
     },
     {
       "ids": [
-        "projects-kajaran",
         "projects-restoration-of-the-holy-mother-of-god-church-in-tsovasar",
         "projects-restoration-of-saint-mary-church-in-hamletavan-achakhlu-and-improvement-of-the-surrounding-area",
         "projects-other-completed-projects",

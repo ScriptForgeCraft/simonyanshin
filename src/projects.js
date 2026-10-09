@@ -11,7 +11,6 @@ const pagination = document.querySelector('[data-project-pagination]')
 const serviceGrid = document.querySelector('[data-service-grid]')
 const modal = document.querySelector('[data-project-modal]')
 const modalTitle = document.querySelector('[data-project-title]')
-const modalKicker = document.querySelector('[data-project-kicker]')
 const modalCopy = document.querySelector('[data-project-copy]')
 const modalMeta = document.querySelector('[data-project-meta]')
 const modalGallery = document.querySelector('[data-project-gallery]')
@@ -64,12 +63,6 @@ const fullImageName = (image) => (typeof image === 'string' ? image : image.full
 const cardThumbnailName = (image) => thumbnailName(image).replace(/\.[^.]+$/, '.avif')
 
 const firstBody = (project) => localizedContent(project).blocks.find((block) => block.body)?.body ?? ''
-
-const groupLabel = (project) => {
-  if (project.kind === 'machinery') return text.worksMachineryLabel
-  if (project.kind === 'service') return text.worksServiceLabel
-  return text.worksProjectLabel
-}
 
 const photoLabel = (count) => {
   const category = new Intl.PluralRules(locale).select(count)
@@ -274,11 +267,6 @@ const createProjectCard = (project, index) => {
   const mediaTop = document.createElement('span')
   mediaTop.className = 'work-card-media-top'
 
-  const type = document.createElement('span')
-  type.className = 'work-card-type'
-  type.textContent = groupLabel(project)
-  mediaTop.append(type)
-
   if (project.images.length) {
     const count = document.createElement('span')
     count.className = 'work-card-photo-count'
@@ -440,7 +428,6 @@ const openProject = (project, opener) => {
   projectOpener = opener
   const content = localizedContent(project)
 
-  modalKicker.textContent = groupLabel(project)
   modalTitle.textContent = content.title
   modalMeta.textContent = project.images.length ? photoLabel(project.images.length) : text.worksNoPhotos
   renderProjectCopy(project)

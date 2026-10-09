@@ -472,43 +472,6 @@ export const projects = [
     }
   },
   {
-    "id": "projects-restoration-of-the-tatev-oil-mill-2010",
-    "group": "projects",
-    "kind": "project",
-    "order": 12,
-    "sourcePath": "projects/restoration-of-the-tatev-oil-mill-2010",
-    "images": [
-      "image-001.jpg",
-      "image-002.jpg"
-    ],
-    "content": {
-      "hy": {
-        "title": "Տաթևի ձիթհանի վերականգնում",
-        "blocks": [
-          {
-            "body": "Տաթևի ձիթհանի վերականգնման նախագիծը վերաբերում է 2010 թվականին։ Կառույցի ավանդական տեսքի և ինքնատիպության պահպանումը, ինչպես նաև պատմական արտադրական մշակույթի արժեքը դրա նկարագրության հիմնական շեշտադրումներն են։"
-          }
-        ]
-      },
-      "ru": {
-        "title": "Реставрация Татевской маслобойни",
-        "blocks": [
-          {
-            "body": "Проект реставрации Татевской маслобойни относится к 2010 году. Его описание акцентирует сохранение традиционного облика и характера сооружения, а также ценность исторической производственной культуры."
-          }
-        ]
-      },
-      "en": {
-        "title": "Restoration of the Tatev Oil Mill",
-        "blocks": [
-          {
-            "body": "The Tatev Oil Mill restoration project dates to 2010. Its description emphasizes preserving the structure’s traditional appearance and distinctive character, as well as the value of historic production culture."
-          }
-        ]
-      }
-    }
-  },
-  {
     "id": "projects-restoration-of-kotavank-and-improvement-of-the-surrounding-area",
     "group": "projects",
     "kind": "project",
@@ -762,6 +725,36 @@ export const projects = [
             "body": "In the historic Old Goris district, we restored Saint Hripsime Church and improved the surrounding grounds. A key priority was to preserve the church’s relationship with its historic setting, along with its traditional appearance and distinctive architectural details. The landscaping and site improvements complemented the restoration and helped create a coherent setting for the church and its surroundings."
           }
         ]
+      }
+    }
+  },
+  {
+    "id": "projects-kajaran",
+    "group": "projects",
+    "kind": "project",
+    "order": 19,
+    "sourcePath": "projects/kajaran",
+    "images": [
+      "image-001.jpg",
+      "image-002.jpg",
+      "image-003.jpg",
+      "image-004.jpg",
+      "image-005.jpg",
+      "image-006.jpg",
+      "image-007.jpg"
+    ],
+    "content": {
+      "hy": {
+        "title": "Քաջարան",
+        "blocks": []
+      },
+      "ru": {
+        "title": "Каджаран",
+        "blocks": []
+      },
+      "en": {
+        "title": "Kajaran",
+        "blocks": []
       }
     }
   }
