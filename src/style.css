@@ -868,16 +868,17 @@ svg {
     display: none;
   }
   .hero {
-    min-height: 600px;
+    min-height: 560px;
   }
   .hero-media img {
-    object-position: 63% center;
+    object-position: 72% center;
   }
   .hero-content {
-    padding-top: 168px;
+    padding-top: 148px;
   }
   .hero h1 {
-    font-size: clamp(28px, 9vw, 38px);
+    font-size: clamp(27px, 8vw, 32px);
+    line-height: 1.24;
     overflow-wrap: anywhere;
   }
   .hero-description {
@@ -985,7 +986,7 @@ svg {
     display: none;
   }
   .hero {
-    min-height: 575px;
+    min-height: 550px;
   }
 }
 
