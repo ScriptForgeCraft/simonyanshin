@@ -508,29 +508,21 @@
 .partners-section {
   position: relative;
   overflow: hidden;
-  padding-block: clamp(82px, 9vw, 116px);
-  color: #fff;
-  background: linear-gradient(115deg, #141414, #24211d 52%, #161616);
-}
-
-.partners-section::before {
-  position: absolute;
-  inset: auto -8% -80% auto;
-  width: min(75vw, 880px);
-  aspect-ratio: 1;
-  border: 1px solid rgba(210, 165, 97, .18);
-  border-radius: 50%;
-  content: "";
-  pointer-events: none;
+  padding-block: clamp(58px, 6vw, 78px);
+  color: var(--ink-deep);
+  background: #f7f4ee url('/about/partners-background.png') center / cover no-repeat;
 }
 
 .partners-section .container { position: relative; }
 .partners-heading { margin-bottom: 36px; text-align: center; }
 .partners-heading .content-kicker {
   margin-bottom: 0;
-  color: #fff;
-  font-size: clamp(20px, 2.5vw, 32px);
-  letter-spacing: 1.5px;
+  color: var(--ink-deep);
+  font-family: "Noto Serif Armenian", Georgia, "Times New Roman", serif;
+  font-size: clamp(20px, 2.5vw, 30px);
+  font-weight: 600;
+  letter-spacing: .7px;
+  line-height: 1.2;
 }
 
 .partners-marquee {
@@ -558,17 +550,28 @@
 
 .partners-marquee::before {
   left: 0;
-  background: linear-gradient(90deg, #171615, transparent);
+  background: linear-gradient(90deg, rgba(247, 244, 238, .98), transparent);
 }
 
 .partners-marquee::after {
   right: 0;
-  background: linear-gradient(270deg, #1a1917, transparent);
+  background: linear-gradient(270deg, rgba(244, 241, 235, .94), transparent);
 }
 
 .partners-marquee:focus-visible {
   outline: 2px solid var(--gold-light);
   outline-offset: 5px;
+}
+
+@media (min-width: 761px) {
+  .partners-marquee {
+    width: calc(100vw - 80px);
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .partners-marquee::before,
+  .partners-marquee::after { display: none; }
 }
 
 .partners-track,
@@ -605,9 +608,9 @@
   justify-content: center;
   margin: 0;
   padding: clamp(18px, 2vw, 28px);
-  border: 1px solid rgba(255, 255, 255, .12);
-  background: #faf9f6;
-  box-shadow: 0 13px 28px rgba(0, 0, 0, .16);
+  border: 1px solid rgba(112, 92, 62, .2);
+  background: rgba(250, 249, 246, .94);
+  box-shadow: 0 13px 28px rgba(72, 58, 39, .13);
   transition: transform .22s cubic-bezier(.22, 1, .36, 1), border-color .22s ease, box-shadow .22s ease;
 }
 
@@ -624,7 +627,7 @@
 
 .partner-card:hover {
   border-color: rgba(210, 165, 97, .76);
-  box-shadow: 0 17px 34px rgba(0, 0, 0, .25);
+  box-shadow: 0 17px 34px rgba(72, 58, 39, .21);
   transform: translateY(-3px);
 }
 
