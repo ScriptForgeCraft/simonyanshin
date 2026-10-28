@@ -1,3 +1,6 @@
+/*
+  X-Robots-Tag: index, follow
+
 # Service worker files should always be revalidated. The Workbox precache
 # manifest then controls asset versioning after each deployment.
 /sw.js
